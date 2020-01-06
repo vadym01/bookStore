@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div th:replace="common/header :: navbar" />
+
+
+
+
+<div class="row justify-content-center" style="margin-top: 60px;">
+    <div class="col-xs-9 col-xs-offset-3">
+        <div th:if="${emptyList}">
+            <h5 style="font-style: italic;">Oops, no result is found. Try something else or try again later.</h5>
+        </div>
+        <form th:action="@{/setDefaultPayment}" method="post">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Default</th>
+                    <th>Credit Card</th>
+                    <th>Operations</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="userPayment : ${userPaymentList}">
+                    <td><input type="radio" name="defaultUserPaymentId"
+                               th:value="${userPayment.id}"
+                               th:checked="${userPayment.defaultPayment}" /></td>
+                    <td th:text="${userPayment.cardName}"></td>
+                    <td><a
+                            th:href="@{/updateCreditCard(id=${userPayment.id})}"><i
+                            class="fa fa-pencil"></i></a>&nbsp;&nbsp;<a
+                            th:href="@{/removeCreditCard(id=${userPayment.id})}"><i
+                            class="fa fa-times"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-primary" type="submit">Save</button>
+        </form>
+
+            <h1>HelloWorld</h1>
+</div>
+</div>
+
+
+
+
+
+<!--<section >-->
+<!--    <div class="grid-construct-x row" style="border: solid 1px red">-->
+<!--          <ul class="book-item" style="width: 18rem" data-th-each="book : ${bookList}">-->
+
+<!--                <div class="book-image-container">-->
+<!--                    <img id="img-of-book" class="img-responsive img-thumbnail" th:src="@{/image/book/}+${book.id}+'.png'">-->
+<!--              </div>-->
+<!--              <div class="card-body">-->
+<!--              </div>-->
+<!--          </ul>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

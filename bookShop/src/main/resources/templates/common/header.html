@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity51">
+
+<head th:fragment="common-header">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>My books</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/css/non-responsive.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet" />
+    <link rel="icon" href="/image/applie-touch-icon.png" />
+</head>
+<div th:fragment="navbar">
+<!--    <div class="page-top"-->
+<!--         style="width: 100%; height: 20px; background-color: #f46b42;"></div>-->
+<!--     Static navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <a class="navbar-brand" th:href="@{/}">My Book store
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a th:href="@{/allBooks/}" class="dropdown-item">All books</a>
+                        <div class="dropdown-divider"></div>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/addBook}" class="dropdown-item">Ad a new Book</a>
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav justify-content-end">
+
+                <li class="searchBar">
+                    <form class="form-inline my-2 my-lg-0 ">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-info" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/}">ADMIN</a>
+                    <a class="btn btn-success" sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a>
+                    <a class="btn btn-success" sec:authorize="hasRole('ROLE_USER')" th:href="@{/myAccount}">
+                        <span sec:authentication="name">Name</span>
+                        </a>
+                    <a class="btn btn-success" sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a>
+                    </li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="body-bottom-scripts">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</div>
+
+
+</body>
+</html>

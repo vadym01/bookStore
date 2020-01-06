@@ -1,0 +1,63 @@
+body{
+	padding-top: 0px;
+	background-color: #f1f1f1;
+	font-family: sans-serif;
+}
+
+
+td{
+	border: solid 1px;
+}
+
+#bookTable{
+	min-width: 100%;
+	min-height: 100%;
+	position: relative;
+}
+
+
+.emphasis {
+	color: #b35a92;
+	font-style: normal;
+}
+
+.searchBar {
+	margin-right: 18px;
+}
+
+/*.book-item{*/
+/*	background-color: white;*/
+/*	width: 24%;*/
+/*	display: inline;*/
+/*}*/
+
+/*.book-content{*/
+/*	background-color: white;*/
+/*	width: 270px;*/
+/*}*/
+
+/*.book-image-container{*/
+/*	width: 400px;*/
+/*	height: 400px;*/
+/*	background-color: red;*/
+/*}*/
+
+/*#img-of-Book{*/
+/*	width: 300px;*/
+/*	height: 300px; !* Размеры *!*/
+/*	!*background: #fc0; !* Цвет фона *!*!*/
+/*}*/
+
+
+
+.shelf-book{
+	width: 200px;
+	height: 200px;
+}
+
+.book-item{
+	margin-top: 20px;
+}
+
+
+

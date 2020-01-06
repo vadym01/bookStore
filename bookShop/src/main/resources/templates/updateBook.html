@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div th:replace="common/header :: navbar" />
+
+
+<!--<h1 th:text="${book.title}"></h1>-->
+<div class="container">
+    <form class="form-group" th:action="@{/admin/updateBook}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${book.id}">
+        <fieldset>
+            <legend class="text-center">New Book</legend>
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title"  aria-describedby="bookTitle"
+                       placeholder="Book title" th:value="${book.title}" required="required" />
+                <small id="bookTitle" class="form-text text-muted"> Book title/write in this field name of the book </small>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" name="author" aria-describedby="authorBook"
+                       placeholder="Author" th:value="${book.author}" required="required" />
+                <small id="authorBook" class="form-text text-muted"> Author of the book/write in this field name of the author </small>
+            </div>
+
+            <div class="form-group">
+                <label for="publishingHouse">Publishing house</label>
+                <input type="text" class="form-control" id="publishingHouse" name="publishingHouse" aria-describedby="publishingH"
+                       placeholder="Publishing house" th:value="${book.publishingHouse}" required="required" />
+                <small id="publishingH" class="form-text text-muted"> Publishing house /write in this field name of the publishing house </small>
+            </div>
+
+            <div class="form-group">
+                <label for="language">Language</label>
+                <input type="text" class="form-control" id="language" name="language" aria-describedby="languageOfBook"
+                       placeholder="Language of book" th:value="${book.language}" required="required" />
+                <small id="languageOfBook" class="form-text text-muted"> Language of book /write in this field language of the book </small>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfPublication">Date of publication</label>
+                <input type="date" class="form-control" id="dateOfPublication" name="dateOfPublication" aria-describedby="dateBook"
+                       placeholder="Date of publication" th:value="${book.dateOfPublication}" required="required" />
+                <small id="dateBook" class="form-text text-muted"> Date of publication/write in this field date of publication </small>
+            </div>
+
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                <input type="text" class="form-control" id="genre" name="genre" aria-describedby="genreOfBook"
+                       placeholder="Genre of book" th:value="${book.genre}" required="required" />
+                <small id="genreOfBook" class="form-text text-muted"> Genres of book/write in this field genre of book </small>
+            </div>
+
+            <div class="form-group">
+                <label for="numberOfPages">Number of pages</label>
+                <input type="number" class="form-control" id="numberOfPages" name="numberOfPages" aria-describedby="NPages"
+                       placeholder="Number of pages" th:value="${book.numberOfPages}" required="required" />
+                <small id="NPages" class="form-text text-muted"> Number of pages/write in this field number of pages </small>
+            </div>
+
+            <div class="form-group">
+                <label for="formatOfBook">Paperback vs Hardcover</label>
+                <select class="form-control" id="formatOfBook" name="formatOfBook" th:value="${book.formatOfBook}" aria-describedby="bookFormat">
+                    <option value="paperback" >Paperback</option>
+                    <option value="hardcover" >Hardcover</option>
+                </select>
+                <small id="bookFormat" class="form-text text-muted"> Format of book/chose in this drop field format of the book </small>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="available">Available book</label>
+                <select class="form-control" id="available" name="available" th:value="${book.available}" aria-describedby="ifAvailable">
+                    <option value="true" >Available</option>
+                    <option value="false" >Unavailable</option>
+                </select>
+                <small id="ifAvailable" class="form-text text-muted"> Available/chose in this drop field if the book is available </small>
+            </div>
+
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" aria-describedby="priceOfBook"
+                       placeholder="Price of book" th:value="${book.price}" required="required" />
+                <small id="priveOfBook" class="form-text text-muted"> Price of book/write in this field price of book </small>
+            </div>
+
+            <div class="form-group">
+                <label for="numberOfAvailableBooks">Number of available books</label>
+                <input type="number" class="form-control" id="numberOfAvailableBooks" name="numberOfAvailableBooks" aria-describedby="NumbersOfAv"
+                       placeholder="Number of available books" th:value="${book.numberOfAvailableBooks}" required="required" />
+                <small id="NumbersOfAv" class="form-text text-muted"> Number of available books/write in this field number of available books </small>
+            </div>
+
+            <div class="form-group">
+                <label class="description" for="description">Description</label>
+                <textarea name="description" rows="10" class="form-control" id="description" aria-describedby="descriptionB"
+                          th:value="${book.description}" placeholder="Description"></textarea>
+                <small id="descriptionB" class="form-text text-muted">Description of the book</small>
+            </div>
+
+            <div class="form-group">
+                <label for="image" >Book image</label>
+                <input type="file" id="image" name="image"
+                       th:value="${book.image}" aria-describedby="imageOfBook">
+                <small id="imageOfBook">Chose image for book</small>
+            </div>
+
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add book</button>
+<!--            <a class="btn" th:href="@{/}">Cancel</a>-->
+        </div>
+        </fieldset>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    <div class="form-group">-->
+<!--        <label for="exampleInputPassword1">Password</label>-->
+<!--        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+<!--    </div>-->
+<!--    <div class="form-group form-check">-->
+<!--        <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--        <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--    </div>-->
+
+<!--&lt;!&ndash;    selectdropDown&ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleFormControlSelect1">Example select</label>-->
+<!--        <select class="form-control" id="exampleFormControlSelect1">-->
+<!--            <option>1</option>-->
+<!--            <option>2</option>-->
+<!--            <option>3</option>-->
+<!--            <option>4</option>-->
+<!--            <option>5</option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+
+<!--    choseFile-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleFormControlFile1">Example file input</label>-->
+<!--        <input type="file" class="form-control-file" id="exampleFormControlFile1">-->
+<!--    </div>-->
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

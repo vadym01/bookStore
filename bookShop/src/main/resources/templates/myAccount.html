@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div th:replace="common/header :: navbar" />
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="myOrders" data-toggle="list" href="#list-orders" role="tab" >My orders</a>
+                <a class="list-group-item list-group-item-action" id="myInformation" data-toggle="list" href="#list-personalInformation" role="tab" >My personal information</a>
+                <a class="list-group-item list-group-item-action" id="deliveryList" data-toggle="list" href="#list-deliveryList" role="tab" >My delivery addresses</a>
+                <a class="list-group-item list-group-item-action" id="deliveryInformation" data-toggle="list" href="#list-deliveryInformation" role="tab" >Delivery information</a>
+                <a class="list-group-item list-group-item-action" id="bankCard" data-toggle="list" href="#list-myBankCards" role="tab" >My bank cards</a>
+                <a class="list-group-item list-group-item-action" id="saveBankCard" data-toggle="list" href="#list-saveNewCard" role="tab" >Save new bank card</a>
+            </div>
+        </div>
+
+
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-orders" role="tabpanel" aria-labelledby="myOrders"> <h1>My orders</h1> </div>
+                <div class="tab-pane fade" id="list-personalInformation" role="tabpanel" aria-labelledby="myInformation">  <h1>My personal information</h1></div>
+                <div class="tab-pane fade" id="list-deliveryList" role="tabpanel" aria-labelledby="deliveryList">
+<!--                    ListDeliveryAdresses-->
+                    <div class="container">
+                        <table class="table">
+
+                            <thead>
+                            <tr>
+                                <td>Delivery Country</td>
+                                <td>Delivery location(city/town)</td>
+                                <td>Delivery Street</td>
+                                <td>Delivery zipCode</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-th-each="delivery : ${userDeliveryList}">
+                                <td th:text="${delivery.deliveryCountry}"></td>
+                                <td th:text="${delivery.deliveryLocation}"></td>
+                                <td th:text="${delivery.deliveryStreet}"></td>
+                                <td th:text="${delivery.deliveryZipCode}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-deliveryInformation" role="tabpanel" aria-labelledby="deliveryInformation">
+
+
+<!--                    deliveryInformation-->
+                    <form th:action="@{saveNewDeliveryInf}" method="post">
+
+                        <div class="form-group">
+                            <label for="deliveryCountry">Delivery Country</label>
+                            <input type="text" class="form-control" id="deliveryCountry" placeholder="Street" aria-describedby="dCountry"
+                                   name="deliveryCountry" th:value="${delivery.deliveryCountry}" required="required">
+                            <small id="dCountry" class="form-text text-muted"> Enter in this field your country </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deliveryLocation">Delivery location(city/town)</label>
+                            <input type="text" class="form-control" id="deliveryLocation" placeholder="Street" aria-describedby="dLocation"
+                                   name="deliveryLocation" th:value="${delivery.deliveryLocation}" required="required">
+                            <small id="dLocation" class="form-text text-muted"> Enter in this field your location </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="street">Delivery Street</label>
+                            <input type="text" class="form-control" id="street" placeholder="Street" aria-describedby="dStreet"
+                                   name="deliveryStreet" th:value="${delivery.deliveryStreet}" required="required">
+                            <small id="dStreet" class="form-text text-muted"> Enter in this field delivery street </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deliveryZipCode">Delivery zipCode</label>
+                            <input type="text" class="form-control" id="deliveryZipCode" placeholder="Delivery ZipCode" aria-describedby="zip"
+                                   name="deliveryZipCode" th:value="${delivery.deliveryZipCode}" required="required">
+                            <small id="zip" class="form-text text-muted"> Enter in this field zip code </small>
+                        </div>
+
+
+
+                        <button type="submit" class="btn btn-primary">save</button>
+
+                    </form>
+
+                </div>
+                <div class="tab-pane fade" id="list-myBankCards" role="tabpanel" aria-labelledby="bankCard">
+
+
+
+                    <div class="container">
+                        <table class="table">
+
+                            <thead>
+                            <tr>
+                                <td>CardName</td>
+                                <td>Card Type</td>
+                                <td>Card number</td>
+                                <td>Cardholder name</td>
+                                <td>Expiry Year</td>
+                                <td>Location (your city/town)</td>
+                                <td>Billing address</td>
+                                <td>Postal code</td>
+                                <td>CV</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-th-each="bankCard : ${bankCardList}">
+
+                                <td th:text="${bankCard.cardName}"></td>
+                                <td th:text="${bankCard.type}"></td>
+                                <td th:text="${bankCard.cardNumber}"></td>
+                                <td th:text="${bankCard.holderName}"></td>
+                                <td th:text="${bankCard.expiryYear}"></td>
+                                <td th:text="${bankCard.location}"></td>
+                                <td th:text="${bankCard.billingAddress}"></td>
+                                <td th:text="${bankCard.postalCode}"></td>
+                                <td th:text="${bankCard.cv}"></td>
+
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="list-saveNewCard" role="tabpanel" aria-labelledby="saveBankCard">
+
+<!--                    newBankCard-->
+                    <form th:action="@{saveCard}" method="post">
+
+<!--                        <div class="form-group">-->
+<!--                            <label for="Type">Type</label>-->
+<!--                            <input type="text" class="form-control" id="Type" name="type"  aria-describedby="cardType"-->
+<!--                                   placeholder="Shose card type" th:value="${bankCard.type}" required="required" />-->
+<!--                            <small id="cardType" class="form-text text-muted"> Enter in this field card type </small>-->
+<!--                        </div>-->
+
+                        <div class="form-group">
+                            <label for="cardName">Card name</label>
+                            <input type="text" class="form-control" id="cardName" name="cardName"  aria-describedby="name"
+                                   placeholder="Card name" th:value="${bankCard.cardName}" required="required" />
+                            <small id="name" class="form-text text-muted"> Enter in this field card name </small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="type">Card type</label>
+                            <select class="form-control" id="type" name="type" th:value="${bankCard.type}" aria-describedby="cardType">
+                                <option value="visa" >Visa</option>
+                                <option value="masterCard" >MasterCard</option>
+                                <option value="amex" >AMEX</option>
+                            </select>
+                            <small id="cardType" class="form-text text-muted"> Chose your type of card like visa,mastercard... </small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="number">Card number</label>
+                            <input type="text" class="form-control" id="number" name="cardNumber"  aria-describedby="CNumber"
+                                   placeholder="Card name" th:value="${bankCard.cardNumber}" required="required" />
+                            <small id="CNumber" class="form-text text-muted"> Enter in this field card number </small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="holderName">Cardholder name</label>
+                            <input type="text" class="form-control" id="holderName" name="holderName"  aria-describedby="HName"
+                                   placeholder="Card holder  name" th:value="${bankCard.holderName}" required="required" />
+                            <small id="HName" class="form-text text-muted"> Enter in this field holder name </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expiryYear">Expiry Year</label>
+                            <input type="date" class="form-control" id="expiryYear" name="expiryYear" aria-describedby="date"
+                                   placeholder="Expiry year" th:value="${bankCard.expiryYear}" required="required" />
+                            <small id="date" class="form-text text-muted"> Date of expiry Year </small>
+                        </div>
+
+
+                        <div class="form-group">
+                        <label for="location">Location (your city/town)</label>
+                        <input type="text" class="form-control" id="location" name="location" aria-describedby="cardLocation"
+                               placeholder="Location" th:value="${bankCard.location}" required="required" />
+                        <small id="cardLocation" class="form-text text-muted"> Chose location </small>
+                    </div>
+
+                        <div class="form-group">
+                            <label for="address">Billing address</label>
+                            <input type="text" class="form-control" id="address" name="billingAddress" aria-describedby="cardBillingAddress"
+                                   placeholder="Billing address" th:value="${bankCard.billingAddress}" required="required" />
+                            <small id="cardBillingAddress" class="form-text text-muted"> Enter billing address </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postalCode">Postal code</label>
+                            <input type="number" class="form-control" id="postalCode" name="postalCode" aria-describedby="cardPostalCode"
+                                   placeholder="Location" th:value="${bankCard.postalCode}" required="required" />
+                            <small id="cardPostalCode" class="form-text text-muted"> Enter postal code </small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="CardCV">CV</label>
+                            <input type="number" class="form-control" id="CardCV" name="cv"  aria-describedby="CV"
+                                   placeholder="CV" th:value="${bankCard.cv}" required="required" />
+                            <small id="CV" class="form-text text-muted"> Enter in this field CV </small>
+                        </div>
+
+<!--                        <div class="form-group">-->
+<!--&lt;!&ndash;                            <label for="CardCV">Title</label>&ndash;&gt;-->
+<!--                            <input type="hidden" class="form-control"  name="cv"-->
+<!--                                   th:with="cv=${}"   th:value="${bankCard.cv}" required="required" />-->
+<!--                        </div>-->
+
+
+<!--                        <div class="form-group">-->
+<!--                            <label for="selectDefault">Shose this card as default</label>-->
+<!--                            <select class="form-control" id="selectDefault" name="defaultPayment" th:value="${book.available}" aria-describedby="ifAvailable">-->
+<!--                                <option value="true" >Available</option>-->
+<!--                                <option value="false" >Unavailable</option>-->
+<!--                            </select>-->
+<!--                            <small id="ifAvailable" class="form-text text-muted"> Available/chose in this drop field if the book is available </small>-->
+<!--                        </div>-->
+
+
+
+
+
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

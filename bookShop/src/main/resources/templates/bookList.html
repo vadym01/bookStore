@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div th:replace="common/header :: navbar" />
+
+<div id="bookTable" class="container">
+    <table id="book" class="table">
+        <thead>
+        <tr>
+<!--            <th>BookId</th>-->
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publishing house</th>
+            <th>Language</th>
+            <th>Date of publication</th>
+            <th>Genre</th>
+            <th>Number of pages</th>
+            <th>Paperback vs Hardcover</th>
+            <th>Available</th>
+            <th>price</th>
+            <th>Number of available books</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="book : ${bookList}">
+<!--            <td><input name="id" th:value="${book.id}"></td>-->
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publishingHouse}"></td>
+            <td th:text="${book.language}"></td>
+            <td th:text="${book.dateOfPublication}"></td>
+            <td th:text="${book.genre}"></td>
+            <td th:text="${book.numberOfPages}"></td>
+            <td th:text="${book.formatOfBook}"></td>
+            <td th:text="${book.available}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.numberOfAvailableBooks}"></td>
+            <td>
+
+                <form th:action="@{deleteBook}" method="post">
+                    <input type="hidden" name="id" th:value="${book.id}" />
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </td>
+
+            <td>
+
+            <form th:action="@{bookList/bookInfo?id=}+${book.id}">
+                <input type="hidden" name="id" th:value="${book.id}" />
+                <input type="submit" value="Update" class="btn btn-success" />
+            </form>
+        </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>
