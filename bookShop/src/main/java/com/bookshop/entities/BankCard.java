@@ -18,7 +18,6 @@ public class BankCard {
     private String billingAddress;
     private int postalCode;
     private int cv;
-    private boolean defaultPayment;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -107,14 +106,6 @@ public class BankCard {
 
     public void setHolderName(String holderName) {
         this.holderName = holderName;
-    }
-
-    public boolean isDefaultPayment() {
-        return defaultPayment;
-    }
-
-    public void setDefaultPayment(boolean defaultPayment) {
-        this.defaultPayment = defaultPayment;
     }
 
     public User getUser() {

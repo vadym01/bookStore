@@ -27,6 +27,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/registration**",
                             "/js/**",
                             "/homepage",
+                            "/bookImage/**",
+                            "/images/**",
                             "/css/**",
                             "/image/**",
                             "/allBooks/**",

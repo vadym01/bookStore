@@ -30,4 +30,9 @@ public class BackCardImpl implements BankCardService {
         return bankCardRepository.findById(id);
     }
 
+    @Override
+    public void deleteBankCard(Long id) {
+        bankCardRepository.deleteById(id);
+     }
+
 }

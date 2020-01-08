@@ -41,7 +41,6 @@ public class PublicController {
             @PathParam("id") Long id, Model model, Principal principal
     ) {
         if(principal != null) {
-//            Login
             String email = principal.getName();
             User user = userService.findByEmail(email);
             model.addAttribute("user", user);
@@ -51,30 +50,11 @@ public class PublicController {
         model.addAttribute("book", book);
 
 
-//this is for select tag fo html attribute when value of that particular
-// attribute depends of number of available books(from 1 to book.getNumberOfAvailableBooks())
-// that is given by DB book.numberOfAvailableBooks
-//        List<Integer> quantityList = Arrays.asList();
-//        for(int i=0;i<book.getNumberOfAvailableBooks();i++){
-//            quantityList.add(i);
-//        }
-//        model.addAttribute("quantityList", quantityList);
-//        model.addAttribute("qty",1);
-
-
-//        hard coded list of numbers for selecting quantity
         List<Integer> qtyList = Arrays.asList(1,2,3,4,5,6,7,8,10);
         model.addAttribute("qtyList",qtyList);
         return "bookPage";
     }
 
-
-//    @RequestMapping(value = "/allBooks/bookPage/{id}")
-//    public String getById(@PathVariable Long id,Model model){
-//        Book book = bookService.getBook(id);
-//        model.addAttribute("book",book);
-//        return "bookPage";
-//    }
 
 
 }

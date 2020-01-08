@@ -8,11 +8,16 @@ import com.bookshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -50,7 +55,6 @@ public class UserController {
     @RequestMapping(value = "/saveCard", method = RequestMethod.POST)
     public String saveCard(@ModelAttribute("bankCard")BankCard bankCard,Principal principal){
         User user = userService.findByEmail(principal.getName());
-        bankCard.setDefaultPayment(false);
         bankCardService.saveCard(user,bankCard);
         return "redirect:myAccount";
     }
@@ -61,6 +65,14 @@ public class UserController {
         deliveryService.saveDeliveryAddress(user,delivery);
         return "redirect:myAccount";
     }
+
+    @RequestMapping("/deleteBankCard")
+    public String deleteBook(@ModelAttribute("id")Long id, ModelMap modelMap){
+        bankCardService.deleteBankCard(id);
+        return "redirect:myAccount";
+    }
+
+
 
 
 

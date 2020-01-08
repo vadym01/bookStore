@@ -10,4 +10,6 @@ public interface BankCardService  {
     void saveCard(User user, BankCard bankCard);
 
     Optional<BankCard> getAllById(Long id);
+
+    void deleteBankCard(Long id);
 }

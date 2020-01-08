@@ -42,14 +42,14 @@ public class Admin {
     }
 
     @RequestMapping(value = "/addBook", method = RequestMethod.GET)
-    public String addNewBook(Model model){
+    public String book(Model model){
         Book book = new Book();
         model.addAttribute("book",book);
         return "newBook";
     }
 
     @RequestMapping( value = "/addBook", method = RequestMethod.POST)
-    public String POSTBook(@ModelAttribute("book")Book book,HttpServletRequest request){
+    public String saveNewBook(@ModelAttribute("book")Book book,HttpServletRequest request){
 
         bookService.addNewBook(book);
 
