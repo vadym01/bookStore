@@ -1,6 +1,5 @@
 package com.bookshop.service;
 
-import com.bookshop.entities.BankCard;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.bookshop.entities.User;
@@ -14,6 +13,6 @@ public interface UserService extends UserDetailsService {
 
     User save(UserRegistrationDto registration);
 
-    Optional<User> findById(Long id);
+//    Optional<User> findById(Long id);
 
 }

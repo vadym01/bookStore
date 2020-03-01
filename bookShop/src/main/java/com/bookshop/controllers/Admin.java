@@ -1,13 +1,24 @@
 package com.bookshop.controllers;
 
 import com.bookshop.entities.Book;
+import com.bookshop.entities.CartExtensions;
+import com.bookshop.entities.User;
+import com.bookshop.entities.UserOrder;
 import com.bookshop.repository.BookRepository;
+//import com.bookshop.service.AdminUsersOrdersService;
+import com.bookshop.repository.CartExtensionRepository;
+import com.bookshop.repository.UserOrderRepository;
 import com.bookshop.service.BookService;
 
+import com.bookshop.service.CartExtensionService;
+import com.bookshop.service.UserOrderService;
+import com.bookshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 //import javax.servlet.http.HttpServletRequest;
 //import org.springframework.http.HttpRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,8 +33,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.Principal;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Controller
@@ -36,10 +52,61 @@ public class Admin {
     @Autowired
     private BookRepository bookRepository;
 
-    @GetMapping("/")
-    public String adminPage(){
+    @Autowired
+    private CartExtensionService cartExtensionService;
+
+    @Autowired
+    private UserOrderRepository userOrderRepository;
+
+    @Autowired
+    private UserOrderService userOrderService;
+
+    @Autowired
+    private UserService userService;
+
+
+
+
+
+
+    @RequestMapping("/userOrders")
+    public String searchAll(@RequestParam("size") Optional<Integer> size,
+                            @RequestParam("page")Optional<Integer>page,Model model){
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(6);
+        Page<UserOrder> userOrderPage = userOrderService.getUserOrderAdmin(PageRequest.of(currentPage-1,pageSize),userOrderService.userOrderForAdmin());
+        model.addAttribute("userOrder",userOrderPage);
+        int totalPages = userOrderPage.getTotalPages();
+        if(totalPages > 0){
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers",pageNumbers);
+        }
         return "adminPage";
     }
+
+
+
+
+
+
+
+
+
+    @RequestMapping("/changeAdminStatus")
+    public String change(@RequestParam("id")Long id){
+        userOrderService.changeStatusToAdminOrder(id);
+        return "redirect:userOrders";
+    }
+
+    @RequestMapping("/changeOrderStatus")
+    public String changeOrderStatus(@RequestParam("id")Long id){
+        userOrderService.changeStatusForOrderAdmin(id);
+        return "redirect:userOrders";
+    }
+
+
 
     @RequestMapping(value = "/addBook", method = RequestMethod.GET)
     public String book(Model model){
@@ -85,10 +152,21 @@ public class Admin {
         return "redirect:bookList";
     }
 
-    @RequestMapping("/bookList")
-    public String bookList(Model model){
-        Iterable<Book> bookList = bookService.findAll();
-        model.addAttribute("bookList",bookList);
+
+        @RequestMapping("/bookList")
+        public String bookList(@RequestParam("size") Optional<Integer> size,
+                @RequestParam("page")Optional<Integer>page,Model model){
+            int currentPage = page.orElse(1);
+            int pageSize = size.orElse(6);
+            Page<Book> bookList = bookService.getAllBooksPaginated(PageRequest.of(currentPage-1,pageSize));
+            model.addAttribute("bookList",bookList);
+            int totalPages = bookList.getTotalPages();
+            if(totalPages > 0){
+                List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages)
+                        .boxed()
+                        .collect(Collectors.toList());
+                model.addAttribute("pageNumbers",pageNumbers);
+            }
         return "bookList";
     }
 
@@ -112,6 +190,8 @@ public class Admin {
         model.addAttribute("book",book);
         return "updateBook";
     }
+
+
 
 
 }

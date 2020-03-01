@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Book {
@@ -16,17 +17,19 @@ public class Book {
     private String language;
     private String publishingHouse;
     private String genre;
-    private String available;
+    private boolean available;
     private String dateOfPublication;
     private int numberOfPages;
-    private int price;
-     private String formatOfBook;
+    private double price;
+    private int sales;
+    private String formatOfBook;
 
     @Column(columnDefinition = "text")
     private String description;
     private int numberOfAvailableBooks;
     @Transient
     private MultipartFile image;
+
 
     public Book() {
     }
@@ -104,20 +107,28 @@ public class Book {
         this.numberOfPages = numberOfPages;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getAvailable() {
+    public boolean isAvailable() {
         return available;
     }
 
-    public void setAvailable(String available) {
+    public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
     }
 
     public String getDescription() {

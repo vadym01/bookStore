@@ -19,49 +19,49 @@
 
      <div class="form-group">
          <label for="author">Author</label>
-         <input type="text" class="form-control" id="author" name="author" aria-describedby="authorBook"
+         <input type="text" class="form-control longF" id="author" name="author" aria-describedby="authorBook"
                 placeholder="Author" th:value="${book.author}" required="required" />
          <small id="authorBook" class="form-text text-muted"> Author of the book/write in this field name of the author </small>
     </div>
 
         <div class="form-group">
             <label for="publishingHouse">Publishing house</label>
-            <input type="text" class="form-control" id="publishingHouse" name="publishingHouse" aria-describedby="publishingH"
+            <input type="text" class="form-control longF" id="publishingHouse" name="publishingHouse" aria-describedby="publishingH"
                    placeholder="Publishing house" th:value="${book.publishingHouse}" required="required" />
             <small id="publishingH" class="form-text text-muted"> Publishing house /write in this field name of the publishing house </small>
         </div>
 
         <div class="form-group">
             <label for="language">Language</label>
-            <input type="text" class="form-control" id="language" name="language" aria-describedby="languageOfBook"
+            <input type="text" class="form-control longF" id="language" name="language" aria-describedby="languageOfBook"
                    placeholder="Language of book" th:value="${book.language}" required="required" />
             <small id="languageOfBook" class="form-text text-muted"> Language of book /write in this field language of the book </small>
         </div>
 
         <div class="form-group">
             <label for="dateOfPublication">Date of publication</label>
-            <input type="date" class="form-control" id="dateOfPublication" name="dateOfPublication" aria-describedby="dateBook"
+            <input type="date" class="form-control shortF" id="dateOfPublication" name="dateOfPublication" aria-describedby="dateBook"
                    placeholder="Date of publication" th:value="${book.dateOfPublication}" required="required" />
             <small id="dateBook" class="form-text text-muted"> Date of publication/write in this field date of publication </small>
         </div>
 
         <div class="form-group">
             <label for="genre">Genre</label>
-            <input type="text" class="form-control" id="genre" name="genre" aria-describedby="genreOfBook"
+            <input type="text" class="form-control longF" id="genre" name="genre" aria-describedby="genreOfBook"
                    placeholder="Genre of book" th:value="${book.genre}" required="required" />
             <small id="genreOfBook" class="form-text text-muted"> Genres of book/write in this field genre of book </small>
         </div>
 
         <div class="form-group">
             <label for="numberOfPages">Number of pages</label>
-            <input type="number" class="form-control" id="numberOfPages" name="numberOfPages" aria-describedby="NPages"
+            <input type="number" class="form-control shortF" id="numberOfPages" name="numberOfPages" aria-describedby="NPages"
                    placeholder="Number of pages" th:value="${book.numberOfPages}" required="required" />
             <small id="NPages" class="form-text text-muted"> Number of pages/write in this field number of pages </small>
         </div>
 
         <div class="form-group">
             <label for="formatOfBook">Paperback vs Hardcover</label>
-            <select class="form-control" id="formatOfBook" name="formatOfBook" th:value="${book.formatOfBook}" aria-describedby="bookFormat">
+            <select class="form-control shortF" id="formatOfBook" name="formatOfBook" th:value="${book.formatOfBook}" aria-describedby="bookFormat">
                 <option value="paperback" >Paperback</option>
                 <option value="hardcover" >Hardcover</option>
             </select>
@@ -72,7 +72,7 @@
 
         <div class="form-group">
             <label for="available">Available book</label>
-            <select class="form-control" id="available" name="available" th:value="${book.available}" aria-describedby="ifAvailable">
+            <select class="form-control shortF" id="available" name="available" th:value="${book.available}" aria-describedby="ifAvailable">
                 <option value="true" >Available</option>
                 <option value="false" >Unavailable</option>
             </select>
@@ -82,14 +82,14 @@
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" name="price" aria-describedby="priceOfBook"
-                   placeholder="Price of book" th:value="${book.price}" required="required" />
+            <input type="number" step="0.01" class="form-control shortF" id="price" name="price" aria-describedby="priceOfBook"
+                   placeholder="Price of book" th:value="${book.price}" required="required"/>
             <small id="priveOfBook" class="form-text text-muted"> Price of book/write in this field price of book </small>
         </div>
 
         <div class="form-group">
             <label for="numberOfAvailableBooks">Number of available books</label>
-            <input type="number" class="form-control" id="numberOfAvailableBooks" name="numberOfAvailableBooks" aria-describedby="NumbersOfAv"
+            <input type="number" class="form-control shortF" id="numberOfAvailableBooks" name="numberOfAvailableBooks" aria-describedby="NumbersOfAv"
                    placeholder="Number of available books" th:value="${book.numberOfAvailableBooks}" required="required" />
             <small id="NumbersOfAv" class="form-text text-muted"> Number of available books/write in this field number of available books </small>
         </div>

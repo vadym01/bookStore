@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div th:replace="common/header :: navbar" />
+
+
+
+<div class="container">
+    <div th:replace="common/header :: deliveryForm" />
+
+
+<!--        <div class="col-12 col-sm-12 col-lg-9 col-xl-8">-->
+<!--            <form th:action="@{changeDeliveryInformation}" method="post">-->
+                <!--                        <input type="hidden" name="id" th:value="${delivery.id}">-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="deliveryCountry">Delivery Country</label>-->
+<!--                    <input type="text" class="form-control" id="deliveryCountry" placeholder="country" aria-describedby="dCountry"-->
+<!--                           name="deliveryCountry" th:value="${delivery.deliveryCountry}" required="required">-->
+<!--                    <small id="dCountry" class="form-text text-muted"> Enter in this field your country </small>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="deliveryLocation">Delivery location(city/town)</label>-->
+<!--                    <input type="text" class="form-control" id="deliveryLocation" placeholder="location" aria-describedby="dLocation"-->
+<!--                           name="deliveryLocation" th:value="${delivery.deliveryLocation}" required="required">-->
+<!--                    <small id="dLocation" class="form-text text-muted"> Enter in this field your location </small>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="street">Delivery Street</label>-->
+<!--                    <input type="text" class="form-control" id="street" placeholder="street" aria-describedby="dStreet"-->
+<!--                           name="deliveryStreet" th:value="${delivery.deliveryStreet}" required="required">-->
+<!--                    <small id="dStreet" class="form-text text-muted"> Enter in this field delivery street </small>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="deliveryZipCode">Delivery zipCode</label>-->
+<!--                    <input type="text" class="form-control" id="deliveryZipCode" placeholder="zip" aria-describedby="zip"-->
+<!--                           name="deliveryZipCode" th:value="${delivery.deliveryZipCode}" required="required">-->
+<!--                    <small id="zip" class="form-text text-muted"> Enter in this field zip code </small>-->
+<!--                </div>-->
+
+<!--                <div class="d-flex justify-content-start">-->
+<!--                    <button th:if="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Save</button>-->
+<!--                    <button th:unless="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Change</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+    </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-10">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Language</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-th-each="cart : ${cartExtension}">
+                <td><a th:href="@{/bookPage?id=}+${cart.book.id}"><img class="img-responsive img-thumbnail" id="orderInfImg" th:src="@{/bookImage/}+${cart.book.id}+'.png'"/></a></td>
+                <td th:text="${cart.book.title}"></td>
+                <td th:text="${cart.book.author}"></td>
+                <td th:text="${cart.book.language}"></td>
+                <td class="d-flex flex-row"> <span th:text="${cart.book.price}"></span><span class="uah">&#8372;</span><div th:if="${cart.quantity&gt;1}"> </span><span>*</span><span th:text="${cart.quantity}"></span> </div></td>
+            </tr>
+            </tbody>
+        </table>
+                <hr>
+        <div class="d-flex justify-content-end">
+
+                    <div th:if="${fieldDisabled == 'true'}">
+                        <h1>enter delivery information</h1>
+                    </div>
+
+                    <div th:unless="${fieldDisabled == 'true'}">
+
+                        <form action='paymentProcess' method='POST' id='checkout-form' xmlns:th="http://www.w3.org/1999/xhtml">
+                            <input type='hidden' th:value='${totalPrice/100}' name='amount' />
+                            <h1>Price:<span th:text='${totalPrice/100}' /></h1>
+                            <script
+                                    src='https://checkout.stripe.com/checkout.js'
+                                    class='stripe-button'
+                                    th:attr='data-key=${stripeKey},
+                                    data-amount=${amount},
+                                    date-currency=${currency}'
+                                    data-name='Book Shop'
+                                    data-description='Product Checkout'
+                                    data-image='http://www.stackabuse.com/assets/images/sa-java-dark.svg?v=b5a08453df'
+                                    data-locale='auto'
+                                    data-zip-code='false'>
+                            </script>
+
+                        </form>
+                    </div>
+        </div>
+
+
+
+
+
+
+
+
+        <a class="btn btn-danger" th:href="@{myAccount}">Return</a>
+<!--        <a class="btn btn-success" th:href="@{payment}">Submit</a>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+    <footer th:replace="common/header :: footer"/>
+
+    <div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

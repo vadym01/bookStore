@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.bookshop.entities.BankCard;
+import com.bookshop.entities.*;
 import com.bookshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,8 +18,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 //
-import com.bookshop.entities.Role;
-import com.bookshop.entities.User;
 import com.bookshop.security.registrationDTO.UserRegistrationDto;
 
 @Service
@@ -34,6 +32,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+
+
+
+
     public User findByEmail(String email){
         return userRepository.findByEmail(email);
     }
@@ -42,16 +44,22 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setFirstName(registration.getFirstName());
         user.setLastName(registration.getLastName());
+        user.setTelephone(registration.getTelephone());
         user.setEmail(registration.getEmail());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
+        UserCart userCart = new UserCart();
+        userCart.setUser(user);
+        user.setUserCart(userCart);
+
         return userRepository.save(user);
+
     }
 
-    @Override
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
+//    @Override
+//    public Optional<User> findById(Long id) {
+//        return userRepository.findById(id);
+//    }
 
 
 

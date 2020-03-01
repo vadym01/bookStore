@@ -3,34 +3,46 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="common/header :: common-header"/>
 <body>
+
 <div th:replace="common/header :: navbar" />
 
+<div class="container-fluid fullWindow">
+    <div class="row justify-content-center">
+    <div class="box col-7 col-sm-5 col-md-3 col-lg-9 col-xl-6" data-th-each="book:${bookPage}">
+        <div class="content ">
+                <a th:href="@{/bookPage?id=}+${book.id}"> <img class=" bookImage" th:src="@{/bookImage/}+${book.id}+'.png'"/></a>
+        </div>
+        <div class="bottomContainer">
+            <div class="bookTitle">
+                <span th:text="${book.title}"></span></div>
+            <div class="bookAuthor"><span class="bookAuthor text-right" th:text="${book.author}"></span></br>
+                <span class="bookPrice text-right" th:text="${book.price}"></span><span class="uah">&#8372;</span></div>
+            <div class="bookPrice"></div>
+        </div>
+        </div>
+    </div>
+    </div>
+<div class="container" >
+    <div class="row" th:fragment="pagination" >
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                        <a class="page-link" th:href="@{/allBooks(size=${bookPage.size}, page=${pageNumber})}" th:text=${pageNumber}>1</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
 
-<div class="container" style="height: 50%">
 
-            <table border="0" id="bookList">
-                <thead><tr><th></th></tr></thead>
-                <tbody>
-                <tr class="book-item" data-th-each="book : ${bookList}">
-                    <td>
-                        <div th:if="${book != null}">
-                            <div class="row">
-                                <a th:href="@{/bookPage?id=}+${book.id}"> <img class="img-responsive img-thumbnail" th:src="@{/bookImage/}+${book.id}+'.png'" style="width: 100px;height: 100px"/></a>
-                                <div class="col-xs-9">
-                                    <h4 th:text="${book.title}"></h4>
-                                    <span th:text="${book.dateOfPublication}"></span>
-                                    <span th:text="${book.author}"></span>
-                                    <span th:text="${#strings.capitalize(book.formatOfBook)}"></span>
-                                    <span th:text="${book.numberOfPages}"><span> pages</span></span>
-                                   <span th:text="${book.price}">price</span>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
 
+
+
+<footer th:replace="common/header :: footer"/>
 
 <div th:replace="common/header :: body-bottom-scripts" />
 

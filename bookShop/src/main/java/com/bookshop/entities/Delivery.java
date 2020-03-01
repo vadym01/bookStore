@@ -1,6 +1,7 @@
 package com.bookshop.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Delivery {
@@ -12,10 +13,15 @@ public class Delivery {
     private String deliveryStreet;
     private String deliveryCountry;
     private String deliveryZipCode;
+    private boolean actual;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "delivery",cascade = CascadeType.ALL)
+    private List<UserOrder> userOrder;
+
 
     public Delivery() {
     }
@@ -66,5 +72,21 @@ public class Delivery {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isActual() {
+        return actual;
+    }
+
+    public void setActual(boolean actual) {
+        this.actual = actual;
+    }
+
+    public List<UserOrder> getUserOrder() {
+        return userOrder;
+    }
+
+    public void setUserOrder(List<UserOrder> userOrder) {
+        this.userOrder = userOrder;
     }
 }

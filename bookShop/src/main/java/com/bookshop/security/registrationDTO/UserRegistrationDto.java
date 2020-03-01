@@ -19,6 +19,9 @@ public class UserRegistrationDto {
     private String lastName;
 
     @NotEmpty
+    private String telephone;
+
+    @NotEmpty
     private String password;
 
     @NotEmpty
@@ -49,6 +52,15 @@ public class UserRegistrationDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getPassword() {

@@ -5,13 +5,16 @@
 <body>
 <div th:replace="common/header :: navbar" />
 
-<div id="bookTable" class="container">
-    <table id="book" class="table">
+<div id="bookTable" class="container-fluid ">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div style="box-sizing: border-box">
+    <table class="table table-striped">
         <thead>
         <tr>
 <!--            <th>BookId</th>-->
-            <th>Title</th>
-            <th>Author</th>
+            <th scope="col">Title</th>
+            <th scope="">Author</th>
             <th>Publishing house</th>
             <th>Language</th>
             <th>Date of publication</th>
@@ -21,12 +24,13 @@
             <th>Available</th>
             <th>price</th>
             <th>Number of available books</th>
-            <th>Delete</th>
-            <th>Update</th>
+            <th><p>Delete</p><p>/Update</p></th>
         </tr>
         </thead>
+
         <tbody>
         <tr data-th-each="book : ${bookList}">
+<!--            <a th:href="@{/bookPage?id=}+${book.id}">-->
 <!--            <td><input name="id" th:value="${book.id}"></td>-->
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
@@ -40,23 +44,42 @@
             <td th:text="${book.price}"></td>
             <td th:text="${book.numberOfAvailableBooks}"></td>
             <td>
-
                 <form th:action="@{deleteBook}" method="post">
                     <input type="hidden" name="id" th:value="${book.id}" />
-                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <input type="submit" value="Delete" class="btn btn-danger small" />
+                </form>
+
+                <form th:action="@{bookList/bookInfo?id=}+${book.id}">
+                    <input type="hidden" name="id" th:value="${book.id}" />
+                    <input type="submit" value="Update" class="btn btn-success small" />
+                </form>
+                <form th:action="@{/bookPage?id=}+${book.id}">
+                    <input type="hidden" name="id" th:value="${book.id}" />
+                    <input type="submit" value="Preview" class="btn btn-info small" />
                 </form>
             </td>
-
-            <td>
-
-            <form th:action="@{bookList/bookInfo?id=}+${book.id}">
-                <input type="hidden" name="id" th:value="${book.id}" />
-                <input type="submit" value="Update" class="btn btn-success" />
-            </form>
-        </td>
+<!--            </a>-->
         </tr>
         </tbody>
     </table>
+
+        </div>
+        </div>
+    </div>
+
+    <div class="row" th:fragment="pagination">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                        <a class="page-link" th:href="@{/admin/bookList(size=${bookList.size}, page=${pageNumber})}" th:text=${pageNumber}>1</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 </div>
 
 

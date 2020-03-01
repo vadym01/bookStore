@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div th:replace="common/header :: navbar" />
+
+    <div class="container-fluid fullWindow">
+        <div class="row">
+            <div class="col-10">
+
+                <div class="d-flex flex-column">
+                    <h2>Delivery information</h2>
+                    <h6>Location:<span th:text="${userOrder.delivery.deliveryLocation}"></span></h6>
+                    <h6>Street:<span th:text="${userOrder.delivery.deliveryStreet}"></span></h6>
+                    <h6>Country:<span th:text="${userOrder.delivery.deliveryCountry}"></span></h6>
+                    <h6>ZipCode:<span th:text="${userOrder.delivery.deliveryZipCode}"></span></h6>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+            <div class="row d-flex flex-column align-content-center">
+                <div class="col-10">
+                <h3 th:if='${error}' th:text='${error}'></h3>
+                <div th:unless='${error}'>
+                    <div >
+                        <h3 class="text-center">Success!</h3>
+                        <div>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Author</th>
+                                    <th scope="col">Language</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr data-th-each="cartExtension : ${cartExtensions}">
+                                    <td><img class="img-responsive img-thumbnail" id="orderInfImg" th:src="@{/bookImage/}+${cartExtension.book.id}+'.png'"/></td>
+                                    <td><span th:text="${cartExtension.book.title}"></span></td>
+                                    <td th:text="${cartExtension.book.author}"></td>
+                                    <td th:text="${cartExtension.book.language}"></td>
+                                    <td> <span th:text="${cartExtension.book.price}"></span><span class="uah">&#8372;</span><span th:if="${cartExtension.quantity&gt;1}"><span>*</span><span th:text="${cartExtension.quantity}"></span> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex flex-column align-items-end">
+                                <h3>Total price</h3>
+                                <h3 th:text="${userOrder.totalPrice}"></h3>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+    </div>
+    </div>
+
+
+
+
+<footer th:replace="common/header :: footer"/>
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

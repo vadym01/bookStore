@@ -5,11 +5,13 @@ import com.bookshop.entities.User;
 import com.bookshop.service.BookService;
 import com.bookshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.websocket.server.PathParam;
 import java.security.Principal;
@@ -27,12 +29,7 @@ public class PublicController {
     @Autowired
     BookService bookService;
 
-    @RequestMapping("/allBooks")
-    public String findAll(ModelMap model){
-        List<Book> allBooks = bookService.findAllBoks();
-        model.addAttribute("bookList",allBooks);
-        return "allBooks";
-    }
+
 
 
 
@@ -54,6 +51,13 @@ public class PublicController {
         model.addAttribute("qtyList",qtyList);
         return "bookPage";
     }
+
+//    @RequestMapping("/search")
+//    public String searchAll(@RequestParam(defaultValue = "")String name, Model model){
+//        List<Book> findBook = bookService.findBook(name);
+//        model.addAttribute("book",findBook);
+//        return "searchBook";
+//    }
 
 
 

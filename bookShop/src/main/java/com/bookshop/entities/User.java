@@ -14,15 +14,22 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private String telephone;
     private String email;
     private String password;
 
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-    private List<Delivery> userDeliveryList;
+    private List<UserCart> userCartsList;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-    private List<BankCard> userBankCardList;
+    private List<UserOrder> userOrderList;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private List<CartExtensions> cartExtensionsList;
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    private UserCart userCart;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -36,16 +43,18 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName,String telephone, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.telephone = telephone;
         this.email = email;
         this.password = password;
     }
 
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public User(String firstName, String lastName, String email,String telephone, String password, Collection<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.telephone = telephone;
         this.email = email;
         this.password = password;
         this.roles = roles;
@@ -75,6 +84,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -95,25 +112,42 @@ public class User {
         return roles;
     }
 
+    public List<UserCart> getUserCartsList() {
+        return userCartsList;
+    }
+
+    public void setUserCartsList(List<UserCart> userCartsList) {
+        this.userCartsList = userCartsList;
+    }
+
+    public List<UserOrder> getUserOrderList() {
+        return userOrderList;
+    }
+
+    public void setUserOrderList(List<UserOrder> userOrderList) {
+        this.userOrderList = userOrderList;
+    }
+
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 
-    public List<Delivery> getUserDeliveryList() {
-        return userDeliveryList;
+    public UserCart getUserCart() {
+        return userCart;
     }
 
-    public void setUserDeliveryList(List<Delivery> userDeliveryList) {
-        this.userDeliveryList = userDeliveryList;
+    public void setUserCart(UserCart userCart) {
+        this.userCart = userCart;
     }
 
-    public List<BankCard> getUserBankCardList() {
-        return userBankCardList;
+    public List<CartExtensions> getCartExtensionsList() {
+        return cartExtensionsList;
     }
 
-    public void setUserBankCardList(List<BankCard> userBankCardList) {
-        this.userBankCardList = userBankCardList;
+    public void setCartExtensionsList(List<CartExtensions> cartExtensionsList) {
+        this.cartExtensionsList = cartExtensionsList;
     }
+
 
     @Override
     public String toString() {
@@ -122,6 +156,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
                 ", roles=" + roles +
                 '}';
     }

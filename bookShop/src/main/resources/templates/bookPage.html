@@ -6,60 +6,79 @@
 <div th:replace="common/header :: navbar" />
 
 
-<div class="container">
+<form th:action="@{addToCart}" method="post">
+    <input type="hidden" name="id" th:value="${book.id}"/>
+<div class="container-fluid">
 
-    <form th:action="@{/shoppingCart/addItem}" method="post" style="border: solid 1px red">
-        <input type="hidden" name="id" th:value="${book.id}"/>
-        <div class="row" style="margin-top: 120px">
-            <div class="col-xs-3">
-                <a th:href="@{/allBooks}">Return to oll books</a><br/>
-                <img class="img-responsive shelf-book" th:src="@{/bookImage/}+${book.id}+'.png'"/>
+        <div class="row">
+
+            <div class="col-12 col-sm-7 col-lg-5 col-xl-5 d-flex justify-content-center">
+                        <img class="img-responsive bookPageImg" th:src="@{/bookImage/}+${book.id}+'.png'"/>
             </div>
-            <div class="col-xs-9">
-                <h3 th:text="${book.title}">Book title</h3>
-                <div class="row">
-                    <div class="col-xs-5">
-                        <h3>Author:<span th:text="${book.author}"></span></h3>
-                        <p>Publisher:<span th:text="${book.publishingHouse}"></span></p>
-                        <p>Date of publication:<span th:text="${book.dateOfPublication}"></span></p>
-                        <p>Language<span th:text="${book.genre}"></span></p>
-                        <p>Book format: <span th:text="${book.formatOfBook}"></span></p>
-                        <p>Language<span th:text="${book.genre}"></span></p>
-                        <p>Number of pages<span th:text="${book.numberOfPages}"></span></p>
-                    </div>
-                    <div class="col-xs-7">
-                        <div class="panel panel-default" style="border-with:5px; margin-top: 20px">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <h4>
-                                            Price:<span th:text="${book.price}"></span>
-                                        </h4>
-                                        <span>quantity</span>
-                                        <select name="qty">
-                                            <option th:each="qty : ${qtyList}" th:value="${qty}" th:text="${qty}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <h4 th:if="${book.numberOfAvailableBooks&gt;0}">Available</h4>
-                                        <h4 th:if="${book.numberOfAvailableBooks==0}">Unavailable</h4>
-                                        <button type="submit" class="btn btn-success">Add to cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+            <div class="col-12 col-sm-5 col-lg-7 col-xl-7">
+
+                 <h1 th:text="${book.title}" id="bookTitle"></h1><br>
+                 <h3 th:text="${book.author}" class="text-right"></h3>
+                <hr>
+
+                <div class="items d-flex flex-column align-items-start">
+
+                 <p><b>Category: </b><span th:text="${book.genre}"></span></p>
+                 <p><b>Publish house: </b><span th:text="${book.publishingHouse}"></span></p>
+                 <p><b>Language: </b><span th:text="${book.language}"></span></p>
+                 <p><b>Format: </b><span th:text="${book.formatOfBook}"></span></p>
+                 <p><b>Pages: </b><span th:text="${book.numberOfPages}"></span></p>
+                 <p><b>Date of publication: </b><span th:text="${book.dateOfPublication}"></span></p>
                 </div>
-            </div>
-            <hr/>
-            <p th:text="${book.description}"></p>
+                <hr>
+                <div id="orderInformation" class="d-flex justify-content-end">
+            <h4>
+                <span th:if="${book.numberOfAvailableBooks==0}" class="price"><span th:text="${book.price}"  style="color: #828282"></span>&#8372;</span>
+                <span th:unless="${book.numberOfAvailableBooks==0}" class="price"><span th:text="${book.price}" style="color: black"></span>&#8372;</span>
+            </h4>
+            <span>quantity</span>
+            <select name="quantity">
+                <option th:each="quantity : ${qtyList}" th:value="${quantity}" th:text="${quantity}"></option>
+            </select>
+                </div>
+
+                <div class="d-flex flex-column align-items-end ifAvailableOrder">
+                <h4 th:if="${book.numberOfAvailableBooks&gt;0}">Available</h4>
+                    <h4 th:if="${book.numberOfAvailableBooks==0}">Unavailable</h4>
+                        <div th:if="${book.numberOfAvailableBooks&gt;0}">
+                            <div sec:authorize="isAuthenticated()">
+                                <button id="addBook" type="submit" class="btn btn-success ">Add to cart</button>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <button type="submit" class="btn btn-success ">Add to cart</button>
+                            </div>
+<!--                            <button  type="submit" class="btn btn-success">Add to cart</button>-->
+                        </div>
+                </div>
+
         </div>
-    </form>
+        </div>
+    <hr>
+    <div class="row" style="margin-bottom: 4%;margin-top: 3%;">
+        <div class="col-12" >
+            <div>
+                <h3>About the Book</h3>
+                <span th:text="${book.description}" ></span>
+            </div>
+
+        </div >
+    </div>
 
 </div>
+</form>
 
+
+<footer th:replace="common/header :: footer"/>
 <div th:replace="common/header :: body-bottom-scripts" />
 
+<script src="/js/jqueryProduction3.4.1.js"></script>
+<script src="/js/jQuery/jqueryMain.js"></script>
 </body>
 </html>
 
