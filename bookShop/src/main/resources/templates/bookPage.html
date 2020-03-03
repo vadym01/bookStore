@@ -46,6 +46,7 @@
                 <div class="d-flex flex-column align-items-end ifAvailableOrder">
                 <h4 th:if="${book.numberOfAvailableBooks&gt;0}">Available</h4>
                     <h4 th:if="${book.numberOfAvailableBooks==0}">Unavailable</h4>
+                    <div id="success"></div>
                         <div th:if="${book.numberOfAvailableBooks&gt;0}">
                             <div sec:authorize="isAuthenticated()">
                                 <button id="addBook" type="submit" class="btn btn-success ">Add to cart</button>
@@ -74,7 +75,7 @@
 </form>
 
 
-<footer th:replace="common/header :: footer"/>
+<!--<footer th:replace="common/header :: footer"/>-->
 <div th:replace="common/header :: body-bottom-scripts" />
 
 <script src="/js/jqueryProduction3.4.1.js"></script>

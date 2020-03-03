@@ -10,11 +10,11 @@
 
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-6 ">
+			<div class="col-8 col-sm-8 col-md-6 col-lg-4 col-xl-4">
 
 				<div th:if="${param.success}">
 					<div class="alert alert-info">You've successfully registered
-						to our awesome app!</div>
+						to our site!</div>
 				</div>
 
 				<div style="text-align: center"><h1>Registration</h1></div>
@@ -44,7 +44,7 @@
 
 					<div class="form-group"
 						 th:classappend="${#fields.hasErrors('telephone')}? 'has-error':''">
-						<label for="email" class="control-label">Telephone</label> <input
+						<label for="Telephone" class="control-label">Telephone</label> <input
 							id="telephone" class="form-control" th:field="*{telephone}" />
 						<p class="error-message"
 						   th:each="error : ${#fields.errors('telephone')}" th:text="${error}">Validation
@@ -86,21 +86,39 @@
 							th:each="error : ${#fields.errors('confirmPassword')}"
 							th:text="${error}">Validation error</p>
 					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
-						<input id="terms" type="checkbox" th:field="*{terms}" />   <label
-							class="control-label" for="terms"> I agree with the <a
-							href="#">terms and conditions</a> for Registration.
-						</label>
-						<p class="error-message"
-							th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation
-							error</p>
+<!--					<div class="form-group"-->
+<!--						th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">-->
+<!--						<input id="terms" type="checkbox" th:field="*{terms}" />   <label-->
+<!--							class="control-label" for="terms"> I agree with the <a-->
+<!--							href="#">terms and conditions</a> for Registration.-->
+<!--						</label>-->
+<!--						<p class="error-message"-->
+<!--							th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation-->
+<!--							error</p>-->
+<!--					</div>-->
+
+<!--					<div class="d-flex justify-content-center">-->
+<!--						-->
+<!--					</div>-->
+
+<!--						<div class="flex-column">-->
+
+
+					<div class="form-group ">
+						<div class="row d-flex justify-content-center">
+							<div class="col-4">
+								<input type="submit" name="login-submit" id="login-submit"
+									   class="form-control btn btn-primary" value="Submit" />
+							</div>
+
+
+						</div>
 					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-success">Register</button>
-						<span>Already registered? <a href="/" th:href="@{/login}">Login
-								here</a></span>
-					</div>
+
+
+								<p class="d-flex justify-content-end">Already registered? <a href="/" th:href="@{/login}">Login
+								here</a></p>
+
 
 				</form>
 			</div>
@@ -108,7 +126,7 @@
 	</div>
 
 
-<footer th:replace="common/header :: footer"/>
+<!--<footer th:replace="common/header :: footer"/>-->
 
 <div th:replace="common/header :: body-bottom-scripts" />
 </body>

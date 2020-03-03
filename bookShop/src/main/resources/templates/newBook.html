@@ -12,99 +12,99 @@
 
     <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title"  aria-describedby="bookTitle"
-               placeholder="Book title" th:value="${book.title}" required="required" />
-        <small id="bookTitle" class="form-text text-muted"> Book title/write in this field name of the book </small>
+        <input type="text" class="form-control fieldLength" id="title" name="title"  aria-describedby="bookTitle"
+               placeholder="Book title" th:value="${book.title}" required pattern="\S+.*"/>
+        <small id="bookTitle" class="form-text text-muted text-left"> Book title/write in this field name of the book </small>
     </div>
 
      <div class="form-group">
          <label for="author">Author</label>
-         <input type="text" class="form-control longF" id="author" name="author" aria-describedby="authorBook"
-                placeholder="Author" th:value="${book.author}" required="required" />
-         <small id="authorBook" class="form-text text-muted"> Author of the book/write in this field name of the author </small>
+         <input type="text" class="form-control fieldLength" id="author" name="author" aria-describedby="authorBook"
+                placeholder="Author" th:value="${book.author}" required pattern="\S+.*" />
+         <small id="authorBook" class="form-text text-muted"> Author of the book/Write in this field name of the author </small>
     </div>
 
         <div class="form-group">
             <label for="publishingHouse">Publishing house</label>
-            <input type="text" class="form-control longF" id="publishingHouse" name="publishingHouse" aria-describedby="publishingH"
-                   placeholder="Publishing house" th:value="${book.publishingHouse}" required="required" />
-            <small id="publishingH" class="form-text text-muted"> Publishing house /write in this field name of the publishing house </small>
+            <input type="text" class="form-control fieldLength" id="publishingHouse" name="publishingHouse" aria-describedby="publishingH"
+                   placeholder="Publishing house" th:value="${book.publishingHouse}" required pattern="\S+.*" />
+            <small id="publishingH" class="form-text text-muted"> Publishing house /Write in this field name of the publishing house </small>
         </div>
 
         <div class="form-group">
             <label for="language">Language</label>
-            <input type="text" class="form-control longF" id="language" name="language" aria-describedby="languageOfBook"
-                   placeholder="Language of book" th:value="${book.language}" required="required" />
-            <small id="languageOfBook" class="form-text text-muted"> Language of book /write in this field language of the book </small>
+            <input type="text" class="form-control fieldLength" id="language" name="language" aria-describedby="languageOfBook"
+                   placeholder="Language of book" th:value="${book.language}" required pattern="\S+.*" />
+            <small id="languageOfBook" class="form-text text-muted"> Language of book /Write in this field language of the book </small>
         </div>
 
         <div class="form-group">
             <label for="dateOfPublication">Date of publication</label>
-            <input type="date" class="form-control shortF" id="dateOfPublication" name="dateOfPublication" aria-describedby="dateBook"
-                   placeholder="Date of publication" th:value="${book.dateOfPublication}" required="required" />
-            <small id="dateBook" class="form-text text-muted"> Date of publication/write in this field date of publication </small>
+            <input type="date" class="form-control fieldLength" id="dateOfPublication" name="dateOfPublication" aria-describedby="dateBook"
+                   placeholder="Date of publication" th:value="${book.dateOfPublication}" required pattern="\S+.*" />
+            <small id="dateBook" class="form-text text-muted"> Date of publication/Write in this field date of publication </small>
         </div>
 
         <div class="form-group">
             <label for="genre">Genre</label>
-            <input type="text" class="form-control longF" id="genre" name="genre" aria-describedby="genreOfBook"
-                   placeholder="Genre of book" th:value="${book.genre}" required="required" />
-            <small id="genreOfBook" class="form-text text-muted"> Genres of book/write in this field genre of book </small>
+            <input type="text" class="form-control fieldLength" id="genre" name="genre" aria-describedby="genreOfBook"
+                   placeholder="Genre of book" th:value="${book.genre}" required pattern="\S+.*" />
+            <small id="genreOfBook" class="form-text text-muted"> Genres of book/Write in this field genre of book </small>
         </div>
 
         <div class="form-group">
             <label for="numberOfPages">Number of pages</label>
-            <input type="number" class="form-control shortF" id="numberOfPages" name="numberOfPages" aria-describedby="NPages"
-                   placeholder="Number of pages" th:value="${book.numberOfPages}" required="required" />
-            <small id="NPages" class="form-text text-muted"> Number of pages/write in this field number of pages </small>
+            <input type="number" class="form-control fieldLength" id="numberOfPages" name="numberOfPages" aria-describedby="NPages"
+                   placeholder="Number of pages" th:value="${book.numberOfPages}" required pattern="\S+.*" />
+            <small id="NPages" class="form-text text-muted"> Number of pages/Write in this field number of pages </small>
         </div>
 
         <div class="form-group">
             <label for="formatOfBook">Paperback vs Hardcover</label>
-            <select class="form-control shortF" id="formatOfBook" name="formatOfBook" th:value="${book.formatOfBook}" aria-describedby="bookFormat">
+            <select class="form-control fieldLength" id="formatOfBook" name="formatOfBook" th:value="${book.formatOfBook}" aria-describedby="bookFormat">
                 <option value="paperback" >Paperback</option>
                 <option value="hardcover" >Hardcover</option>
             </select>
-            <small id="bookFormat" class="form-text text-muted"> Format of book/chose in this drop field format of the book </small>
+            <small id="bookFormat" class="form-text text-muted"> Format of book/Chose in this drop field format of the book </small>
         </div>
 
 
 
         <div class="form-group">
             <label for="available">Available book</label>
-            <select class="form-control shortF" id="available" name="available" th:value="${book.available}" aria-describedby="ifAvailable">
+            <select class="form-control fieldLength" id="available" name="available" th:value="${book.available}" aria-describedby="ifAvailable">
                 <option value="true" >Available</option>
                 <option value="false" >Unavailable</option>
             </select>
-            <small id="ifAvailable" class="form-text text-muted"> Available/chose in this drop field if the book is available </small>
+            <small id="ifAvailable" class="form-text text-muted"> Available/Chose in this drop field if the book is available </small>
         </div>
 
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" step="0.01" class="form-control shortF" id="price" name="price" aria-describedby="priceOfBook"
-                   placeholder="Price of book" th:value="${book.price}" required="required"/>
-            <small id="priveOfBook" class="form-text text-muted"> Price of book/write in this field price of book </small>
+            <input type="number" step="0.01" class="form-control fieldLength" id="price" name="price" aria-describedby="priceOfBook"
+                   placeholder="Price of book" th:value="${book.price}" required pattern="\S+.*"/>
+            <small id="priveOfBook" class="form-text text-muted"> Price of book/Write in this field price of book </small>
         </div>
 
         <div class="form-group">
             <label for="numberOfAvailableBooks">Number of available books</label>
-            <input type="number" class="form-control shortF" id="numberOfAvailableBooks" name="numberOfAvailableBooks" aria-describedby="NumbersOfAv"
-                   placeholder="Number of available books" th:value="${book.numberOfAvailableBooks}" required="required" />
-            <small id="NumbersOfAv" class="form-text text-muted"> Number of available books/write in this field number of available books </small>
+            <input type="number" class="form-control fieldLength" id="numberOfAvailableBooks" name="numberOfAvailableBooks" aria-describedby="NumbersOfAv"
+                   placeholder="Number of available books" th:value="${book.numberOfAvailableBooks}" required pattern="\S+.*" />
+            <small id="NumbersOfAv" class="form-text text-muted"> Number of available books/Write in this field number of available books </small>
         </div>
 
         <div class="form-group">
             <label class="description" for="description">Description</label>
             <textarea name="description" rows="10" class="form-control" id="description" aria-describedby="descriptionB"
-                      th:value="${book.description}" placeholder="Description"></textarea>
+                      th:value="${book.description}" placeholder="Description" required pattern="\S+.*"></textarea>
             <small id="descriptionB" class="form-text text-muted">Description of the book</small>
         </div>
 
         <div class="form-group">
             <label for="image" >Book image</label>
             <input type="file" id="image" name="image"
-                   th:value="${book.image}" aria-describedby="imageOfBook">
+                   th:value="${book.image}" aria-describedby="imageOfBook" required pattern="\S+.*">
             <small id="imageOfBook">Chose image for book</small>
         </div>
 

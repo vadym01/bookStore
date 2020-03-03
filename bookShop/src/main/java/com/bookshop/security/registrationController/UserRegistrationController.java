@@ -34,7 +34,7 @@ public class UserRegistrationController {
 
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
-                                      BindingResult result){
+                                      BindingResult result,Model model){
 
         User existing = userService.findByEmail(userDto.getEmail());
         if (existing != null){

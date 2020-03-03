@@ -44,19 +44,21 @@
             <td th:text="${book.price}"></td>
             <td th:text="${book.numberOfAvailableBooks}"></td>
             <td>
-                <form th:action="@{deleteBook}" method="post">
-                    <input type="hidden" name="id" th:value="${book.id}" />
-                    <input type="submit" value="Delete" class="btn btn-danger small" />
-                </form>
+                <div class="btn-group-sm" data-toggle="buttons">
+                    <form th:action="@{deleteBook}" method="post">
+                        <input type="hidden" name="id" th:value="${book.id}" />
+                        <input type="submit" value="Delete" class="btn btn-danger small" style="width: 100%"/>
+                    </form>
 
-                <form th:action="@{bookList/bookInfo?id=}+${book.id}">
-                    <input type="hidden" name="id" th:value="${book.id}" />
-                    <input type="submit" value="Update" class="btn btn-success small" />
-                </form>
-                <form th:action="@{/bookPage?id=}+${book.id}">
-                    <input type="hidden" name="id" th:value="${book.id}" />
-                    <input type="submit" value="Preview" class="btn btn-info small" />
-                </form>
+                    <form th:action="@{bookList/bookInfo?id=}+${book.id}">
+                        <input type="hidden" name="id" th:value="${book.id}" />
+                        <input type="submit" value="Update" class="btn btn-info small" style="width: 100%"/>
+                    </form>
+                    <form th:action="@{/bookPage?id=}+${book.id}">
+                        <input type="hidden" name="id" th:value="${book.id}" />
+                        <input type="submit" value="Preview" class="btn btn-info small" />
+                    </form>
+                </div>
             </td>
 <!--            </a>-->
         </tr>

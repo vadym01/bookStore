@@ -8,47 +8,44 @@
 
 
 <div class="container">
-    <div th:replace="common/header :: deliveryForm" />
+     <div class="col-12 col-sm-12 col-lg-9 col-xl-8">
+            <form th:action="@{saveNewDeliveryInfOrder}" method="post">
+                                        <input type="hidden" name="id" th:value="${delivery.id}">
 
+                <div class="form-group">
+                    <label for="deliveryCountry">Delivery Country</label>
+                    <input type="text" class="form-control" id="deliveryCountry" placeholder="country" aria-describedby="dCountry"
+                           name="deliveryCountry" th:value="${delivery.deliveryCountry}" required="required">
+                    <small id="dCountry" class="form-text text-muted"> Enter in this field your country </small>
+                </div>
 
-<!--        <div class="col-12 col-sm-12 col-lg-9 col-xl-8">-->
-<!--            <form th:action="@{changeDeliveryInformation}" method="post">-->
-                <!--                        <input type="hidden" name="id" th:value="${delivery.id}">-->
+                <div class="form-group">
+                    <label for="deliveryLocation">Delivery location(city/town)</label>
+                    <input type="text" class="form-control" id="deliveryLocation" placeholder="location" aria-describedby="dLocation"
+                           name="deliveryLocation" th:value="${delivery.deliveryLocation}" required="required">
+                    <small id="dLocation" class="form-text text-muted"> Enter in this field your location </small>
+                </div>
 
-<!--                <div class="form-group">-->
-<!--                    <label for="deliveryCountry">Delivery Country</label>-->
-<!--                    <input type="text" class="form-control" id="deliveryCountry" placeholder="country" aria-describedby="dCountry"-->
-<!--                           name="deliveryCountry" th:value="${delivery.deliveryCountry}" required="required">-->
-<!--                    <small id="dCountry" class="form-text text-muted"> Enter in this field your country </small>-->
-<!--                </div>-->
+                <div class="form-group">
+                    <label for="street">Delivery Street</label>
+                    <input type="text" class="form-control" id="street" placeholder="street" aria-describedby="dStreet"
+                           name="deliveryStreet" th:value="${delivery.deliveryStreet}" required="required">
+                    <small id="dStreet" class="form-text text-muted"> Enter in this field delivery street </small>
+                </div>
 
-<!--                <div class="form-group">-->
-<!--                    <label for="deliveryLocation">Delivery location(city/town)</label>-->
-<!--                    <input type="text" class="form-control" id="deliveryLocation" placeholder="location" aria-describedby="dLocation"-->
-<!--                           name="deliveryLocation" th:value="${delivery.deliveryLocation}" required="required">-->
-<!--                    <small id="dLocation" class="form-text text-muted"> Enter in this field your location </small>-->
-<!--                </div>-->
+                <div class="form-group">
+                    <label for="deliveryZipCode">Delivery zipCode</label>
+                    <input type="text" class="form-control" id="deliveryZipCode" placeholder="zip" aria-describedby="zip"
+                           name="deliveryZipCode" th:value="${delivery.deliveryZipCode}" required="required">
+                    <small id="zip" class="form-text text-muted"> Enter in this field zip code </small>
+                </div>
 
-<!--                <div class="form-group">-->
-<!--                    <label for="street">Delivery Street</label>-->
-<!--                    <input type="text" class="form-control" id="street" placeholder="street" aria-describedby="dStreet"-->
-<!--                           name="deliveryStreet" th:value="${delivery.deliveryStreet}" required="required">-->
-<!--                    <small id="dStreet" class="form-text text-muted"> Enter in this field delivery street </small>-->
-<!--                </div>-->
-
-<!--                <div class="form-group">-->
-<!--                    <label for="deliveryZipCode">Delivery zipCode</label>-->
-<!--                    <input type="text" class="form-control" id="deliveryZipCode" placeholder="zip" aria-describedby="zip"-->
-<!--                           name="deliveryZipCode" th:value="${delivery.deliveryZipCode}" required="required">-->
-<!--                    <small id="zip" class="form-text text-muted"> Enter in this field zip code </small>-->
-<!--                </div>-->
-
-<!--                <div class="d-flex justify-content-start">-->
-<!--                    <button th:if="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Save</button>-->
-<!--                    <button th:unless="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Change</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
+                <div class="d-flex justify-content-start">
+                    <button th:if="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Save</button>
+                    <button th:unless="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Change</button>
+                </div>
+            </form>
+        </div>
     </div>
         <div class="row d-flex justify-content-center">
             <div class="col-10">
@@ -118,7 +115,7 @@
 
 
 
-    <footer th:replace="common/header :: footer"/>
+<!--    <footer th:replace="common/header :: footer"/>-->
 
     <div th:replace="common/header :: body-bottom-scripts" />
 

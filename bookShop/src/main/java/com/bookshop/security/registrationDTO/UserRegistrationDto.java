@@ -12,27 +12,27 @@ import com.bookshop.security.constraint.FieldMatch;
 })
 public class UserRegistrationDto {
 
-    @NotEmpty
+    @NotEmpty(message = "The field may not be empty")
     private String firstName;
 
-    @NotEmpty
+    @NotEmpty(message = "The field may not be empty")
     private String lastName;
 
-    @NotEmpty
+    @NotEmpty(message = "The field may not be empty")
     private String telephone;
 
-    @NotEmpty
+    @NotEmpty(message = "The field may not be empty")
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message = "The field may not be empty")
     private String confirmPassword;
 
-    @Email
-    @NotEmpty
+    @Email(message = "Wrong format")
+    @NotEmpty(message = "The field may not be empty")
     private String email;
 
-    @Email
-    @NotEmpty
+    @Email(message = "Wrong format")
+    @NotEmpty(message = "The field may not be empty")
     private String confirmEmail;
 
     @AssertTrue

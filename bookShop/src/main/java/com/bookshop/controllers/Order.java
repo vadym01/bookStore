@@ -85,6 +85,13 @@ public class Order {
         return "orderInformation";
     }
 
+    @RequestMapping(value = "/saveNewDeliveryInfOrder", method = RequestMethod.POST)
+    public String saveDelivery(@ModelAttribute("delivery")Delivery delivery,Principal principal){
+        User user = userService.findByEmail(principal.getName());
+        deliveryService.saveDeliveryAddress(user,delivery);
+        return "redirect:orderInformation";
+    }
+
 
 
     @RequestMapping(value = "/paymentProcess", method = RequestMethod.POST)

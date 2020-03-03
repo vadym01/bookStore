@@ -46,6 +46,15 @@ body{
 }
 
 
+
+/*registration start*/
+.registrationFieldSize{
+	max-width: 400px;
+}
+/*registration end*/
+
+
+
 /*myAccount*/
 
 .fullWindow{
@@ -148,13 +157,10 @@ body{
 
 /*allBooksStart*/
 
-.shortF{
-	max-width: 200px;
+.fieldLength{
+	max-width: 500px;
 }
 
-.longF{
-	max-width: 600px;
-}
 
 /*allBooksEnd*/
 
@@ -445,4 +451,5 @@ body{
 	margin-right: 1em;
 }
 /*bookPageend*/
+
 

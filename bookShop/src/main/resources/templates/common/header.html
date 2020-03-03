@@ -41,7 +41,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <!--                        <div class="dropdown-divider"></div>-->
-                        <a  th:href="@{/admin/addBook}" class="dropdown-item">Ad a new Book</a>
+                        <a  th:href="@{/admin/addBook}" class="dropdown-item">Add a new Book</a>
                         <a  th:href="@{/admin/bookList}" class="dropdown-item">All books (admin)</a>
                     </div>
                 </li>
@@ -59,11 +59,11 @@
 
                 <li class="nav-item">
                     <a class="btn btn-info" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/userOrders}">ADMIN</a>
-                    <a class="btn btn-success" sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a>
+                    <a class="btn btn-success" sec:authorize="isAnonymous()" th:href="@{/login}">My account</a>
                     <a class="btn btn-success" sec:authorize="hasRole('ROLE_USER')" th:href="@{/myAccount}">
                         <span sec:authentication="name">Name</span>
                         </a>
-                    <a class="btn btn-success" sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a>
+                    <a class="btn btn-success" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
                     </li>
                 </li>
             </ul>
@@ -72,156 +72,52 @@
 </div>
 
 
-<!--footer-->
-<div class="footer" th:fragment="footer">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <footer class="footer">
+<!--&lt;!&ndash;footer&ndash;&gt;-->
+<!--<div class="footer" th:fragment="footer">-->
+<!--    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">-->
+<!--    <footer class="footer">-->
 
-    </footer>
-
-
+<!--    </footer>-->
 
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-12 py-1">
-                        <div class="d-flex flex-row justify-content-center justify-content-around">
-                            <!-- Facebook -->
-                            <a class="fb-ic">
-                                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                            <!-- Twitter -->
-                            <a class="tw-ic">
-                                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                            <!-- Google +-->
-                            <a class="gplus-ic">
-                                <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                            <!--Linkedin -->
-                            <a class="li-ic">
-                                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                            <!--Instagram-->
-                            <a class="ins-ic">
-                                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                            <!--Pinterest-->
-                            <a class="pin-ic">
-                                <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-                            </a>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </footer>
 
-<!--    <footer class="pt-5 pb-4" id="contact">-->
+
+<!--    <footer class="footer">-->
 <!--        <div class="container">-->
 <!--            <div class="row">-->
-<!--            <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">-->
-<!--                <h5 class="mb-4 font-weight-bold">ABOUT US</h5>-->
-<!--                <p class="mb-4">Etiam laoreet in ex quis efficitur.</p>-->
-<!--                <ul class="f-address">-->
-<!--                    <li>-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-1"><i class="fas fa-map-marker"></i></div>-->
-<!--                            <div class="col-10">-->
-<!--                                <h6 class="font-weight-bold mb-0">Address:</h6>-->
-<!--                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
-<!--                            </div>-->
+<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
+<!--                    <div class="col-md-12 py-1">-->
+<!--                        <div class="d-flex flex-row justify-content-center justify-content-around">-->
+<!--                            &lt;!&ndash; Facebook &ndash;&gt;-->
+<!--                            <a class="fb-ic">-->
+<!--                                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash; Twitter &ndash;&gt;-->
+<!--                            <a class="tw-ic">-->
+<!--                                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash; Google +&ndash;&gt;-->
+<!--                            <a class="gplus-ic">-->
+<!--                                <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash;Linkedin &ndash;&gt;-->
+<!--                            <a class="li-ic">-->
+<!--                                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash;Instagram&ndash;&gt;-->
+<!--                            <a class="ins-ic">-->
+<!--                                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash;Pinterest&ndash;&gt;-->
+<!--                            <a class="pin-ic">-->
+<!--                                <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>-->
+<!--                            </a>-->
 <!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-1"><i class="far fa-envelope"></i></div>-->
-<!--                            <div class="col-10">-->
-<!--                                <h6 class="font-weight-bold mb-0">Have any questions?</h6>-->
-<!--                                <p><a href="#">Support@userthemes.com</a></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-1"><i class="fas fa-phone-volume"></i></div>-->
-<!--                            <div class="col-10">-->
-<!--                                <h6 class="font-weight-bold mb-0">Address:</h6>-->
-<!--                                <p><a href="#">+XX (0) XX XX-XXXX-XXXX</a></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-
-<!--                    <li>-->
-
-<!--                        <div class="row">-->
-<!--                            <h5 class="mb-4 font-weight-bold">CONNECT WITH US</h5>-->
-<!--                            <ul class="social-pet mt-4">-->
-<!--                                <li><a href="#" title="facebook"><i class="fab fa-facebook-f"></i></a></li>-->
-<!--                                <li><a href="#" title="twitter"><i class="fab fa-twitter"></i></a></li>-->
-<!--                                <li><a href="#" title="google-plus"><i class="fab fa-google-plus-g"></i></a></li>-->
-<!--                                <li><a href="#" title="instagram"><i class="fab fa-instagram"></i></a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-
-<!--                    </li>-->
-
-<!--                </ul>-->
+<!--                    </div>-->
 <!--            </div>-->
 <!--        </div>-->
-<!--        </div>-->
-<!--</footer>-->
-
-
-
-</div>
-
-
-
-
-<!--delivery-->
-<div th:fragment="deliveryForm">
-        <div class="col-12 col-sm-12 col-lg-9 col-xl-8">
-<form th:action="@{saveNewDeliveryInf}" method="post">
-    <!--                        <input type="hidden" name="id" th:value="${delivery.id}">-->
-
-    <div class="form-group">
-        <label for="deliveryCountry">Delivery Country</label>
-        <input type="text" class="form-control" id="deliveryCountry" placeholder="country" aria-describedby="dCountry"
-               name="deliveryCountry" th:value="${delivery.deliveryCountry}" required="required">
-        <small id="dCountry" class="form-text text-muted"> Enter in this field your country </small>
-    </div>
-
-    <div class="form-group">
-        <label for="deliveryLocation">Delivery location(city/town)</label>
-        <input type="text" class="form-control" id="deliveryLocation" placeholder="location" aria-describedby="dLocation"
-               name="deliveryLocation" th:value="${delivery.deliveryLocation}" required="required">
-        <small id="dLocation" class="form-text text-muted"> Enter in this field your location </small>
-    </div>
-
-    <div class="form-group">
-        <label for="street">Delivery Street</label>
-        <input type="text" class="form-control" id="street" placeholder="street" aria-describedby="dStreet"
-               name="deliveryStreet" th:value="${delivery.deliveryStreet}" required="required">
-        <small id="dStreet" class="form-text text-muted"> Enter in this field delivery street </small>
-    </div>
-
-    <div class="form-group">
-        <label for="deliveryZipCode">Delivery zipCode</label>
-        <input type="text" class="form-control" id="deliveryZipCode" placeholder="zip" aria-describedby="zip"
-               name="deliveryZipCode" th:value="${delivery.deliveryZipCode}" required="required">
-        <small id="zip" class="form-text text-muted"> Enter in this field zip code </small>
-    </div>
-
-    <div class="d-flex justify-content-start">
-    <button th:if="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Save</button>
-    <button th:unless="${fieldDisabled == 'true'}" type="submit" class="btn btn-primary deliveryButton">Change</button>
-    </div>
-</form>
-        </div>
-</div>
-
+<!--    </footer>-->
+<!--</div>-->
 
 
 

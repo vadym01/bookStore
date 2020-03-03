@@ -161,7 +161,8 @@ public class UserController {
     //    uncommentMY
     @RequestMapping(value = "/addToCart",method = RequestMethod.POST)
 //    @ResponseStatus(value = HttpStatus.OK)
-    public String addToCart(@RequestParam("id")Long id, Principal principal,CartExtensions cartExtensions){
+    public String addToCart(@RequestParam("id")Long id, Principal principal,CartExtensions cartExtensions,Model model){
+        model.addAttribute("statusSuccess","OK");
         Book book = bookService.getBook(id);
         User user = userService.findByEmail(principal.getName());
         UserCart userCart = user.getUserCart();
