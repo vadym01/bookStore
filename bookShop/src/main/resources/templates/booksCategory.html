@@ -4,15 +4,6 @@
 <head th:replace="common/header :: common-header"/>
 <body>
 <div th:replace="common/header :: navbar" />
-
-
-<!--    <div data-th-each="book : ${bookList}">-->
-<!--        <span th:text="${book.title}"></span>-->
-<!--    </div>-->
-
-
-
-
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="box col-7 col-sm-5 col-md-3 col-lg-9 col-xl-6" data-th-each="book:${bookPage}">
@@ -44,15 +35,6 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-
-
-
-
-
-
-<!--<footer th:replace="common/header :: footer"/>-->
-
 <div th:replace="common/header :: body-bottom-scripts" />
-
 </body>
 </html>

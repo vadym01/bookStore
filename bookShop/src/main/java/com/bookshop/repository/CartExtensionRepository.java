@@ -9,12 +9,6 @@ import java.util.List;
 
 public interface CartExtensionRepository extends CrudRepository<CartExtensions,Long> {
 
-//    List<CartExtensions> findByUserCart(UserCart userCart);
-//    List<CartExtensions> findByOrderStatusLike(boolean orderStatus);
-
-//    List<CartExtensions> findOrderStatusByActiveTrue();
-
-
     List<CartExtensions> findByOrderStatusAndUserCart(boolean orderStatus, UserCart userCart);
 
     CartExtensions getCartExtensionsById(Long id);

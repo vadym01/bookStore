@@ -12,7 +12,6 @@
     <table class="table table-striped">
         <thead>
         <tr>
-<!--            <th>BookId</th>-->
             <th scope="col">Title</th>
             <th scope="">Author</th>
             <th>Publishing house</th>
@@ -27,11 +26,8 @@
             <th><p>Delete</p><p>/Update</p></th>
         </tr>
         </thead>
-
         <tbody>
         <tr data-th-each="book : ${bookList}">
-<!--            <a th:href="@{/bookPage?id=}+${book.id}">-->
-<!--            <td><input name="id" th:value="${book.id}"></td>-->
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.publishingHouse}"></td>
@@ -60,15 +56,12 @@
                     </form>
                 </div>
             </td>
-<!--            </a>-->
         </tr>
         </tbody>
     </table>
-
         </div>
         </div>
     </div>
-
     <div class="row" th:fragment="pagination">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -83,8 +76,6 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-
-
 <div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>

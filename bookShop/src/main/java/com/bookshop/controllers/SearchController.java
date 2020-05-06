@@ -38,34 +38,6 @@ public class SearchController {
 
     private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 
-
-
-//    @RequestMapping("/book/{title}{size}{page}")
-//    public String searchAll(@RequestParam("title") String title,@PathVariable("title") String titleval, @PathVariable Map<String,String> pages, Model model){
-//
-//        model.addAttribute("title",title);
-//        int page = Integer.parseInt(pages.get("page"));
-//        int size = Integer.parseInt(pages.get("size"));
-//        Page<Book> bookSearchList = bookService.getAllBooksPaginatedByTitle(titleval,PageRequest.of(1,1));
-//
-//        model.addAttribute("bookPage",bookSearchList);
-//        int totalPages = bookSearchList.getTotalPages();
-//        if(totalPages > 0){
-//            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages)
-//                    .boxed()
-//                    .collect(Collectors.toList());
-//            model.addAttribute("pageNumbers",pageNumbers);
-//        }
-//        return "searchBook";
-//    }
-
-
-
-
-
-
-
-
     @RequestMapping("/findBook")
     public String searchAll(@RequestParam String title,
                              @RequestParam(required = false,defaultValue= "1") Integer page,
@@ -84,77 +56,6 @@ public class SearchController {
         model.addAttribute("titleVal",title);
         return "searchBook";
     }
-
-
-
-
-
-
-
-
-
-
-
-//    @RequestMapping("/findBook")
-//    public String searchAll(@RequestParam(required = false,defaultValue = "")String title,@PathVariable(required = false) Map<String,String> pages, Model model){
-//        List<Book> bookList = bookRepository.findByTitleContaining(title);
-//        model.addAttribute("searchBookList",bookList);
-//        return "searchBook";
-//    }
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @RequestMapping("/findBook/{page}/{size}/{title}")
-//    public String searchAll(@PathVariable String title, @PathVariable Map<String,String> pages, Model model){
-//        int page = Integer.parseInt(pages.get("page"));
-//        int size = Integer.parseInt(pages.get("size"));
-//        Page<Book> bookSearchList = bookService.getAllBooksPaginatedByTitle(title,PageRequest.of(1,1));
-//
-//        model.addAttribute("bookPage",bookSearchList);
-//        int totalPages = bookSearchList.getTotalPages();
-//        if(totalPages > 0){
-//            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages)
-//                    .boxed()
-//                    .collect(Collectors.toList());
-//            model.addAttribute("pageNumbers",pageNumbers);
-//        }
-//        return "searchBook";
-//    }
-
-
-//    @RequestMapping("/allBooks")
-//    public String searchAll(@RequestParam("size") Optional<Integer> size,
-//                            @RequestParam("page")Optional<Integer>page,Model model){
-//        int currentPage = page.orElse(1);
-//        int pageSize = size.orElse(3);
-//        Page<Book> bookPage = bookService.findPaginated(PageRequest.of(currentPage-1,pageSize));
-//
-//
-//        model.addAttribute("bookList",bookPage);
-//        model.addAttribute("pageSize",pageSize);
-//
-//        int totalPages = bookPage.getTotalPages();
-//        if(totalPages > 0){
-//            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages)
-//                    .boxed()
-//                    .collect(Collectors.toList());
-//            model.addAttribute("totalPages",pageNumbers);
-//        }
-//        return "allBooks";
-//    }
 
     @RequestMapping("/allBooks")
     public String searchAll(@RequestParam("size") Optional<Integer> size,

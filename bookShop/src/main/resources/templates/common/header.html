@@ -7,24 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>My books</title>
-    <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
 
     <link href="/css/non-responsive.css" rel="stylesheet" />
 
-    <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet" />
     <link rel="icon" href="/image/applie-touch-icon.png" />
 </head>
 
-
-
-
 <div th:fragment="navbar">
-
-<!--    <div class="page-top"-->
-<!--         style="width: 100%; height: 20px; background-color: #f46b42;"></div>-->
-<!--     Static navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <a class="navbar-brand" th:href="@{/}">My Book store
         </a>
@@ -40,17 +31,13 @@
                         Dropdown
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<!--                        <div class="dropdown-divider"></div>-->
                         <a  th:href="@{/admin/addBook}" class="dropdown-item">Add a new Book</a>
                         <a  th:href="@{/admin/bookList}" class="dropdown-item">All books (admin)</a>
                     </div>
                 </li>
-
             </ul>
             <ul class="navbar-nav justify-content-end">
-
                 <li class="searchBar">
-
                     <form class="form-inline my-2 my-lg-0 " th:action="@{/findBook}">
                     <input class="form-control mr-sm-2  type="text  name="title" id="title" placeholder="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -70,59 +57,6 @@
         </div>
     </nav>
 </div>
-
-
-<!--&lt;!&ndash;footer&ndash;&gt;-->
-<!--<div class="footer" th:fragment="footer">-->
-<!--    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">-->
-<!--    <footer class="footer">-->
-
-<!--    </footer>-->
-
-
-
-
-<!--    <footer class="footer">-->
-<!--        <div class="container">-->
-<!--            <div class="row">-->
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--                    <div class="col-md-12 py-1">-->
-<!--                        <div class="d-flex flex-row justify-content-center justify-content-around">-->
-<!--                            &lt;!&ndash; Facebook &ndash;&gt;-->
-<!--                            <a class="fb-ic">-->
-<!--                                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash; Twitter &ndash;&gt;-->
-<!--                            <a class="tw-ic">-->
-<!--                                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash; Google +&ndash;&gt;-->
-<!--                            <a class="gplus-ic">-->
-<!--                                <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash;Linkedin &ndash;&gt;-->
-<!--                            <a class="li-ic">-->
-<!--                                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash;Instagram&ndash;&gt;-->
-<!--                            <a class="ins-ic">-->
-<!--                                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash;Pinterest&ndash;&gt;-->
-<!--                            <a class="pin-ic">-->
-<!--                                <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </footer>-->
-<!--</div>-->
-
-
-
-
-
 <div th:fragment="body-bottom-scripts">
     <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

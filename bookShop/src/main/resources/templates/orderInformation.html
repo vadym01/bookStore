@@ -4,35 +4,28 @@
 <head th:replace="common/header :: common-header"/>
 <body>
 <div th:replace="common/header :: navbar" />
-
-
-
 <div class="container">
      <div class="col-12 col-sm-12 col-lg-9 col-xl-8">
             <form th:action="@{saveNewDeliveryInfOrder}" method="post">
                                         <input type="hidden" name="id" th:value="${delivery.id}">
-
                 <div class="form-group">
                     <label for="deliveryCountry">Delivery Country</label>
                     <input type="text" class="form-control" id="deliveryCountry" placeholder="country" aria-describedby="dCountry"
                            name="deliveryCountry" th:value="${delivery.deliveryCountry}" required="required">
                     <small id="dCountry" class="form-text text-muted"> Enter in this field your country </small>
                 </div>
-
                 <div class="form-group">
                     <label for="deliveryLocation">Delivery location(city/town)</label>
                     <input type="text" class="form-control" id="deliveryLocation" placeholder="location" aria-describedby="dLocation"
                            name="deliveryLocation" th:value="${delivery.deliveryLocation}" required="required">
                     <small id="dLocation" class="form-text text-muted"> Enter in this field your location </small>
                 </div>
-
                 <div class="form-group">
                     <label for="street">Delivery Street</label>
                     <input type="text" class="form-control" id="street" placeholder="street" aria-describedby="dStreet"
                            name="deliveryStreet" th:value="${delivery.deliveryStreet}" required="required">
                     <small id="dStreet" class="form-text text-muted"> Enter in this field delivery street </small>
                 </div>
-
                 <div class="form-group">
                     <label for="deliveryZipCode">Delivery zipCode</label>
                     <input type="text" class="form-control" id="deliveryZipCode" placeholder="zip" aria-describedby="zip"
@@ -98,25 +91,12 @@
                     </div>
         </div>
 
-
-
-
-
-
-
-
         <a class="btn btn-danger" th:href="@{myAccount}">Return</a>
-<!--        <a class="btn btn-success" th:href="@{payment}">Submit</a>-->
             </div>
         </div>
     </div>
 
 </div>
-
-
-
-<!--    <footer th:replace="common/header :: footer"/>-->
-
     <div th:replace="common/header :: body-bottom-scripts" />
 
 </body>

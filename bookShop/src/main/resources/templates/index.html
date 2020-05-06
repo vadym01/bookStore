@@ -29,9 +29,6 @@
 			<span class="carousel-control-next-icon"></span>
 		</a>
 	</div>
-
-
-
 		<a th:href="@{category/(category='dateOfPublication')}"><h5 class="text-uppercase font-weight-light text-center m-3">NEW</h5></a>
 		<hr>
 		<div class="row justify-content-center">
@@ -49,9 +46,6 @@
 			</div>
 		</div>
 		<hr>
-
-
-
 <section class="py-5">
 	<div class="container">
 		<h5 class="text-uppercase font-weight-light text-center m-5">some unknown event</h5>
@@ -63,19 +57,11 @@
 			<div class="col-12 col-md-6">
 				<p class="lead">Ready to sell your book online with Blurb?(some link to external site)
 				</p>
-
-<!--				<button type="button" class="btn btn-success">See more</button>-->
-<!--				<form action="https://www.blurb.com/sell-through-blurb">-->
-<!--					<input class="ui-button" type="submit" value="See more" />-->
-<!--				</form>-->
 				<a class="btn btn-info" th:href="@{https://www.blurb.com/sell-through-blurb}">See more</a>
 			</div>
 		</div>
 	</div>
 </section>
-
-
-
 <a th:href="@{category/(category='sales')}"><h5 class="text-uppercase font-weight-light text-center m-3">BEST SELLERS</h5></a>
 <hr>
 <div class="row justify-content-center">
@@ -95,9 +81,6 @@
 <hr>
 
 </div>
-
-<!--<footer th:replace="common/header :: footer"/>-->
-
 <div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>

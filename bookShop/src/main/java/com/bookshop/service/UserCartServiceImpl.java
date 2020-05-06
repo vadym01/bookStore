@@ -30,16 +30,12 @@ public class UserCartServiceImpl implements UserCartService {
     @Autowired
     CartExtensionService cartExtensionService;
 
-
     @Autowired
     CartExtensionRepository cartExtensionRepository;
-
-
 
     @Override
     public void updateUserShoppingCart(UserCart userCart,User user) {
         double total = 0;
-//        List<CartExtensions> cartExtensions = user.getCartExtensionsList();
         List<CartExtensions> cartExtensions = cartExtensionService.getCartExtensionsForUserOrder(false,userCart);
         for(CartExtensions extensions : cartExtensions){
                 cartExtensionService.updateCartExtension(extensions);
@@ -48,41 +44,4 @@ public class UserCartServiceImpl implements UserCartService {
         userCart.setTotalPrice(total);
         userCartRepository.save(userCart);
     }
-
-
-
-//
-
-//    @Override
-//    public void saveItem(Book book, User user,UserCart userCart, int quantity,CartExtensions cartExtensions) {
-//        double temp = cartExtensions.getTotalPrice() + book.getPrice();
-//        cartExtensions.setBook(book);
-//        cartExtensions.setUser(user);
-//        cartExtensions.setTotalPrice(temp);
-//        cartExtensionRepository.save(cartExtensions);
-//        cartExtensionRepository.count(Example.of(cartExtensions));
-//        userCart.setQuantity(quantity);
-//        userCart.setUser(user);
-//        userCart.setBook(book);
-//        userCartRepository.save(userCart);
-//    }
-
-//    @Override
-//    public void delItemCart(Long id) {
-//        userCartRepository.deleteById(id);
-//    }
-
-//    @Override
-//    public void setUser(User user) {
-//        UserCart userCart = new UserCart();
-//        userCart.setUser(user);
-//        userCartRepository.save(userCart);
-//    }
-
-//    @Override
-//    public Optional<UserCart> findById(Long id) {
-//        return userCartRepository.findById(id);
-//    }
-
-
 }

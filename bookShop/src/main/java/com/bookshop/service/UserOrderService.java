@@ -10,9 +10,6 @@ import java.util.List;
 public interface UserOrderService {
     List<UserOrder> getUserOrder(User user,boolean condition);
 
-
-//    List<UserOrder> getUserOrderAdmin(boolean condition);
-
     Page<UserOrder> getUserOrderAdmin(Pageable pageable,List<UserOrder> userOrders);
 
     void changeStatusToOrder(Long id);

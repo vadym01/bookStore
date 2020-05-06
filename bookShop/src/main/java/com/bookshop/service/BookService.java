@@ -8,31 +8,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookService {
-   public Book addNewBook(Book books);
-    public Iterable<Book> findAll();
-    public void deleteBook(Long id);
-//    Book updateBook(Book book);
-////    List<Book> getAllBooks(Long id);
-//    List <Book> getAll();
-    public List<Book> findAllBoks();
-//   public Optional <Book> findOne(Long id);
-    public Book getBook(Long id);
-//    public Book updateBook(Long id);
-
-
-//osnov
+    Book addNewBook(Book books);
+    Iterable<Book> findAll();
+    void deleteBook(Long id);
+    List<Book> findAllBoks();
+    Book getBook(Long id);
     List <Book> findBook(String book);
-
-
     Page<Book> getAllBooksPaginated(Pageable pageable);
-
-//    List<Book> findBookByTitle(String title);
-
     List<Book> sortByDateFirstFour();
-
     List<Book> sortBySalesFirstFour();
-
-
     Page<Book> getAllBooksPaginatedByTitle(String title,Pageable pageable);
 
 

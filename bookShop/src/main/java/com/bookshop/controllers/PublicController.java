@@ -29,10 +29,6 @@ public class PublicController {
     @Autowired
     BookService bookService;
 
-
-
-
-
     @RequestMapping("/bookPage")
     public String bookDetail(
             @PathParam("id") Long id, Model model, Principal principal
@@ -42,23 +38,11 @@ public class PublicController {
             User user = userService.findByEmail(email);
             model.addAttribute("user", user);
         }
-
         Book book = bookService.getBook(id);
         model.addAttribute("book", book);
-
-
         List<Integer> qtyList = Arrays.asList(1,2,3,4,5,6,7,8,10);
         model.addAttribute("qtyList",qtyList);
         return "bookPage";
     }
-
-//    @RequestMapping("/search")
-//    public String searchAll(@RequestParam(defaultValue = "")String name, Model model){
-//        List<Book> findBook = bookService.findBook(name);
-//        model.addAttribute("book",findBook);
-//        return "searchBook";
-//    }
-
-
 
 }

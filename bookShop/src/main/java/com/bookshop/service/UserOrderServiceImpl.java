@@ -20,16 +20,10 @@ public class UserOrderServiceImpl implements UserOrderService {
     @Autowired
     UserOrderRepository userOrderRepository;
 
-
     @Override
     public List<UserOrder> getUserOrder(User user,boolean condition) {
         return userOrderRepository.findByUserAndDisplayToUser(user,condition);
     }
-
-//    @Override
-//    public List<UserOrder> getUserOrderAdmin(boolean condition) {
-//        return userOrderRepository.findByStatusDisplayAdmin(condition);
-//    }
 
     @Override
     public List<UserOrder> userOrderForAdmin(){
@@ -56,12 +50,6 @@ public class UserOrderServiceImpl implements UserOrderService {
         return userOrders;
     }
 
-
-
-
-
-
-
     @Override
     public void changeStatusToOrder(Long id) {
         Optional<UserOrder> userOrder = userOrderRepository.findById(id);
@@ -74,7 +62,6 @@ public class UserOrderServiceImpl implements UserOrderService {
             }
         }
     }
-
 
     @Override
     public void changeStatusToAdminOrder(Long id) {
@@ -103,10 +90,4 @@ public class UserOrderServiceImpl implements UserOrderService {
          userOrderRepository.save(orderStatus);
     }
 }
-
-
-//    @Override
-//    public void changeStatusToAdminOrder(Long id) {
-//         userOrderRepository.deleteById(id);
-//    }
     }

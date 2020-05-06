@@ -16,9 +16,6 @@ public class CartExtensionServiceImpl implements CartExtensionService{
 
     @Autowired
     UserCartRepository userCartRepository;
-//
-//    @Autowired
-//    AdminUsersOrdersService adminUsersOrdersService;
 
     @Override
     public void updateCartExtension(CartExtensions cartExtensions) {
@@ -37,8 +34,6 @@ public class CartExtensionServiceImpl implements CartExtensionService{
         cartExtensions.setUserCart(user.getUserCart());
         cartExtensions.setDisplayToUserStory(false);
         cartExtensions.setOrderStatus(false);
-//        adminUsersOrdersService.saveOrderForAdmin(user,book);
-
         cartExtensionRepository.save(cartExtensions);
     }
 
@@ -47,11 +42,8 @@ public class CartExtensionServiceImpl implements CartExtensionService{
         cartExtensionRepository.deleteById(id);
     }
 
-
-
     @Override
         public List<CartExtensions> getCartExtensionsForUserOrder(boolean status,UserCart userCart) {
-//       List<CartExtensions> cartExtensionServicesList = cartExtensionRepository.findByOrderStatusAndUserCart(status,userCart);
         return cartExtensionRepository.findByOrderStatusAndUserCart(status,userCart);
     }
 

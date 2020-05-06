@@ -5,28 +5,23 @@
 <body>
 <div th:replace="common/header :: navbar" />
 
-
-<!--<h1 th:text="${book.title}"></h1>-->
 <div class="container">
     <form class="form-group" th:action="@{/admin/updateBook}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" th:value="${book.id}">
         <fieldset>
             <legend class="text-center">New Book</legend>
-
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control fieldLength" id="title" name="title"  aria-describedby="bookTitle"
                        placeholder="Book title" th:value="${book.title}" required pattern="\S+.*" />
                 <small id="bookTitle" class="form-text text-muted text-left"> Book title/write in this field name of the book </small>
             </div>
-
             <div class="form-group">
                 <label for="author">Author</label>
                 <input type="text" class="form-control fieldLength" id="author" name="author" aria-describedby="authorBook"
                        placeholder="Author" th:value="${book.author}" required pattern="\S+.*" />
                 <small id="authorBook" class="form-text text-muted"> Author of the book/write in this field name of the author </small>
             </div>
-
             <div class="form-group">
                 <label for="publishingHouse">Publishing house</label>
                 <input type="text" class="form-control fieldLength" id="publishingHouse" name="publishingHouse" aria-describedby="publishingH"
@@ -116,54 +111,7 @@
             </div>
         </fieldset>
     </form>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    <div class="form-group">-->
-<!--        <label for="exampleInputPassword1">Password</label>-->
-<!--        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
-<!--    </div>-->
-<!--    <div class="form-group form-check">-->
-<!--        <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
-<!--        <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
-<!--    </div>-->
-
-<!--&lt;!&ndash;    selectdropDown&ndash;&gt;-->
-<!--    <div class="form-group">-->
-<!--        <label for="exampleFormControlSelect1">Example select</label>-->
-<!--        <select class="form-control" id="exampleFormControlSelect1">-->
-<!--            <option>1</option>-->
-<!--            <option>2</option>-->
-<!--            <option>3</option>-->
-<!--            <option>4</option>-->
-<!--            <option>5</option>-->
-<!--        </select>-->
-<!--    </div>-->
-
-
-<!--    choseFile-->
-<!--    <div class="form-group">-->
-<!--        <label for="exampleFormControlFile1">Example file input</label>-->
-<!--        <input type="file" class="form-control-file" id="exampleFormControlFile1">-->
-<!--    </div>-->
-
-
 <div th:replace="common/header :: body-bottom-scripts" />
 
 </body>

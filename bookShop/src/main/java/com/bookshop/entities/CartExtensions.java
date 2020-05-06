@@ -14,8 +14,6 @@ import java.util.List;
 @Entity
 public class CartExtensions {
 
-//    for Addition detail
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -108,7 +106,6 @@ public class CartExtensions {
     public void setOrderStatus(boolean orderStatus) {
         this.orderStatus = orderStatus;
     }
-
 
     public UserOrder getUserOrder() {
         return userOrder;

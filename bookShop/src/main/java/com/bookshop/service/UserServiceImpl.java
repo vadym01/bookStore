@@ -32,10 +32,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-
-
-
-
     public User findByEmail(String email){
         return userRepository.findByEmail(email);
     }
@@ -51,18 +47,9 @@ public class UserServiceImpl implements UserService {
         UserCart userCart = new UserCart();
         userCart.setUser(user);
         user.setUserCart(userCart);
-
         return userRepository.save(user);
 
     }
-
-//    @Override
-//    public Optional<User> findById(Long id) {
-//        return userRepository.findById(id);
-//    }
-
-
-
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -80,39 +67,4 @@ public class UserServiceImpl implements UserService {
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
     }
-
-
-
-
-
-
-
-
-
-//    find current registred user
-//    @Override
-//    public Long getCurrentUserId() {
-//        SecurityContext securityContext = SecurityContextHolder.getContext();
-//        Authentication authentication = securityContext.getAuthentication();
-//        String id = null;
-//        if (authentication != null)
-//            if (authentication.getPrincipal() instanceof UserDetails)
-//                id = ((UserDetails) authentication.getPrincipal()).getUsername();
-//            else if (authentication.getPrincipal() instanceof String)
-//                id = (String) authentication.getPrincipal();
-//        try {
-//            return Long.valueOf(id != null ? id : "1"); //anonymoususer
-//        } catch (NumberFormatException e) {
-//            return 1L;
-//        }
-//
-//    }
-//
-//    @Override
-//    public Long gerCurrentRegistredUser() {
-//        return getCurrentUserId();
-//    }
-
-
-
 }

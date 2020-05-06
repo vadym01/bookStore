@@ -70,10 +70,6 @@ public class UserController {
         model.addAttribute("userCart",userCart);
         model.addAttribute("cart",userCart);
 
-
-//        List<CartExtensions> itemsForUserCartTest = cartExtensionService.getCartExtensionsForUserCart(false,userCart);
-//        model.addAttribute("cartExtensionsCart",itemsForUserCartTest);
-
                 List<CartExtensions> itemsForUserCart = cartExtensionService.getCartExtensionsForUserOrder(false,userCart);
                 model.addAttribute("cartExtensionsCart",itemsForUserCart);
                 if (itemsForUserCart.isEmpty()){
@@ -89,18 +85,8 @@ public class UserController {
                     model.addAttribute("userOrderStoryEmpty","false");
                 }
 
-
-
-//        List<CartExtensions> itemsForUserCartStoryTest = cartExtensionService.getCartExtensionsForUserCart(true,userCart);
-//        model.addAttribute("cartExtensionsCartStory",itemsForUserCartStoryTest);
-
-
-
         return "myAccount";
     }
-
-//    old
-
 
 
     @RequestMapping(value = "/saveNewDeliveryInf", method = RequestMethod.POST)
@@ -109,9 +95,6 @@ public class UserController {
         deliveryService.saveDeliveryAddress(user,delivery);
         return "redirect:myAccount";
     }
-
-
-
 
     @RequestMapping(value = "/testStory")
     public String testStory(Model model,Principal principal){
@@ -131,10 +114,6 @@ public class UserController {
         model.addAttribute("userCart",userCart);
         model.addAttribute("cart",userCart);
 
-
-//        List<CartExtensions> itemsForUserCartTest = cartExtensionService.getCartExtensionsForUserCart(false,userCart);
-//        model.addAttribute("cartExtensionsCart",itemsForUserCartTest);
-
         List<CartExtensions> itemsForUserCart = cartExtensionService.getCartExtensionsForUserOrder(false,userCart);
         model.addAttribute("cartExtensionsCart",itemsForUserCart);
         if (itemsForUserCart.isEmpty()){
@@ -142,7 +121,6 @@ public class UserController {
         }
 
         List<UserOrder> userOrderList = userOrderService.getUserOrder(user,true);
-//        userOrderList.forEach(UserOrder::getId);
         model.addAttribute("userOrderStory",userOrderList);
         if(userOrderList.isEmpty()){
             model.addAttribute("userOrderStoryEmpty","true");
@@ -150,17 +128,10 @@ public class UserController {
         else {
             model.addAttribute("userOrderStoryEmpty","false");
         }
-
-
-
         return "testStory";
     }
 
-
-
-    //    uncommentMY
     @RequestMapping(value = "/addToCart",method = RequestMethod.POST)
-//    @ResponseStatus(value = HttpStatus.OK)
     public String addToCart(@RequestParam("id")Long id, Principal principal,CartExtensions cartExtensions,Model model){
         model.addAttribute("statusSuccess","OK");
         Book book = bookService.getBook(id);
@@ -172,14 +143,12 @@ public class UserController {
 
     }
 
-
     @RequestMapping("/changeDisplayStatus")
     public String change(@RequestParam("id")Long id){
         userOrderService.changeStatusToOrder(id);
 
         return "redirect:myAccount";
     }
-
 
     @RequestMapping("/deleteItem")
     public String deleteItem(@RequestParam("id")Long id,Principal principal){
@@ -189,6 +158,5 @@ public class UserController {
         userCartService.updateUserShoppingCart(userCart,user);
         return"redirect:myAccount";
     }
-
 
 }

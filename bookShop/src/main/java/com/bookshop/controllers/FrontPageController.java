@@ -49,7 +49,6 @@ public class FrontPageController {
                                 @RequestParam(required = false,defaultValue = "1") Integer page,
                                 Model model){
         model.addAttribute("category",category);
-//        Page<Book> bookPage = bookService.getAllBooksPaginated(PageRequest.of(page-1,quantity,Sort.by(category).descending()));
         Page<Book> bookPage = bookRepository.findAll(PageRequest.of(page-1,size,Sort.by(category).descending()));
         model.addAttribute("bookPage",bookPage);
         int totalPages = bookPage.getTotalPages();

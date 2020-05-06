@@ -4,26 +4,18 @@
 <head th:replace="common/header :: common-header"/>
 <body>
 <div th:replace="common/header :: navbar" />
-
-
 <form th:action="@{addToCart}" method="post">
     <input type="hidden" name="id" th:value="${book.id}"/>
 <div class="container-fluid">
-
         <div class="row">
-
             <div class="col-12 col-sm-7 col-lg-5 col-xl-5 d-flex justify-content-center">
                         <img class="img-responsive bookPageImg" th:src="@{/bookImage/}+${book.id}+'.png'"/>
             </div>
-
             <div class="col-12 col-sm-5 col-lg-7 col-xl-7">
-
                  <h1 th:text="${book.title}" id="bookTitle"></h1><br>
                  <h3 th:text="${book.author}" class="text-right"></h3>
                 <hr>
-
                 <div class="items d-flex flex-column align-items-start">
-
                  <p><b>Category: </b><span th:text="${book.genre}"></span></p>
                  <p><b>Publish house: </b><span th:text="${book.publishingHouse}"></span></p>
                  <p><b>Language: </b><span th:text="${book.language}"></span></p>
@@ -42,7 +34,6 @@
                 <option th:each="quantity : ${qtyList}" th:value="${quantity}" th:text="${quantity}"></option>
             </select>
                 </div>
-
                 <div class="d-flex flex-column align-items-end ifAvailableOrder">
                 <h4 th:if="${book.numberOfAvailableBooks&gt;0}">Available</h4>
                     <h4 th:if="${book.numberOfAvailableBooks==0}">Unavailable</h4>
@@ -54,7 +45,6 @@
                             <div sec:authorize="isAnonymous()">
                                 <button type="submit" class="btn btn-success ">Add to cart</button>
                             </div>
-<!--                            <button  type="submit" class="btn btn-success">Add to cart</button>-->
                         </div>
                 </div>
 
@@ -73,11 +63,7 @@
 
 </div>
 </form>
-
-
-<!--<footer th:replace="common/header :: footer"/>-->
 <div th:replace="common/header :: body-bottom-scripts" />
-
 <script src="/js/jqueryProduction3.4.1.js"></script>
 <script src="/js/jQuery/jqueryMain.js"></script>
 </body>

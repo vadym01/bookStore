@@ -4,27 +4,12 @@ body{
 	font-family: sans-serif;
 }
 
-/*td{*/
-/*	border: solid 1px;*/
-/*}*/
 
 #bookTable{
 	min-width: 100%;
 	min-height: 100%;
 	position: relative;
 }
-
-/*#hiddenDiv{*/
-/*	display: none;*/
-/*	position: absolute;*/
-/*	right: 5px;*/
-/*	top: 80%;*/
-/*	width:347px;*/
-/*	height:160px;*/
-/*	!*display: block;*!*/
-/*	z-index:99999999;*/
-/*}*/
-
 
 .emphasis {
 	color: #b35a92;
@@ -40,22 +25,12 @@ body{
 	align: center;
 }
 
-
 .book-item{
 	margin-top: 20px;
 }
-
-
-
-/*registration start*/
 .registrationFieldSize{
 	max-width: 400px;
 }
-/*registration end*/
-
-
-
-/*myAccount*/
 
 .fullWindow{
 	min-height: 100vh;
@@ -82,7 +57,6 @@ body{
 
 
 .storyInformation{
-	/*text-align: center;*/
 	object-position: center;
 
 }
@@ -97,23 +71,10 @@ body{
 	margin-top: 1%;
 }
 
-
-/*myAccountEnd*/
-
-
-
-
-
-/*orderInformationStart*/
 #orderInfImg{
 	max-width: 100px;
 	height: auto;
 }
-
-
-
-/*orderInformationSEnd*/
-
 
 #deliveryCountry{
 	max-width: 300px;
@@ -146,39 +107,11 @@ body{
 	margin: 0 auto;
 }
 
-
-
-
-/*deliveryEnd*/
-
-
-
-
-
-/*allBooksStart*/
-
 .fieldLength{
 	max-width: 500px;
 }
 
-
-/*allBooksEnd*/
-
-
-
-
-
-
-/*adminorderStart*/
-
-
 .orderCart{
-	/*max-width: 540%;*/
-	/*max-width: 600px;*/
-	/*max-height: 400px;*/
-	/*width: 100%;*/
-	/*height: auto;*/
-
 	border: solid 4px;
 	margin: 0 auto;
 
@@ -186,21 +119,10 @@ body{
 
 .orderCart hr{
 	border: none;
-	background-color: red; /* Цвет линии для браузера Firefox и Opera */
+	background-color: red;
 	height: 3px;
 }
 
-/*adminOrderEnd*/
-
-
-
-
-
-/*footerBegin*/
-
-
-
-/*osnov*/
 .footer{
 	position: absolute;
 	margin-bottom: 0px;
@@ -210,149 +132,37 @@ body{
 	background-color: black;
 }
 
-
-
-
-
-
-
-
-
-
 .fab{
 	color: white;
 }
-
-
-/*footer {*/
-/*	color: #fff;*/
-/*	background-attachment: fixed;*/
-/*	background-color:#222;*/
-/*	background-image: url(https://s7.postimg.org/uyf0oioaz/footer-bg.png);*/
-/*	background-size: cover;*/
-/*	background-position: bottom;*/
-/*}*/
-/*footer p {*/
-/*	color: #ccc;*/
-/*}*/
-/*footer a {*/
-/*	color: #ccc;*/
-/*}*/
-/*.social-pet li {*/
-/*	display: inline-block;*/
-/*	margin-right: 10px;*/
-/*}*/
-/*.social-pet li a {*/
-/*	height: 35px;*/
-/*	width: 35px;*/
-/*	border-radius: 50%;*/
-/*	text-align: center;*/
-/*	display: block;*/
-/*	line-height: 35px;*/
-/*	background-color: #3a5a95;*/
-/*	color: #fff;*/
-/*}*/
-/*.social-pet li:nth-child(2) a {*/
-/*	background-color: #57aced;*/
-/*}*/
-/*.social-pet li:nth-child(3) a {*/
-/*	background-color: #dd4f43;*/
-/*}*/
-/*.social-pet li:nth-child(4) a {*/
-/*	background-color: #6b27b2;*/
-/*}*/
-/*.social-pet li a:hover {*/
-/*	background-color: #0141a2;*/
-/*}*/
-/*.social-pet li a:hover i {*/
-/*	transform: rotate(360deg);*/
-/*	-moz-transform: rotate(360deg);*/
-/*	-webkit-transform: rotate(360deg);*/
-/*}*/
-/*.recent-post li {*/
-/*	display: block;*/
-/*	color: #ccc;*/
-/*	margin-bottom: 25px;*/
-/*}*/
-/*.recent-post li label {*/
-/*	float: left;*/
-/*	border: 2px solid #ccc;*/
-/*	padding: 1px 7px;*/
-/*	text-align: center;*/
-/*}*/
-/*.recent-post li label span {*/
-/*	color: #fff;*/
-/*}*/
-/*footer .input-group-addon {*/
-/*	background-color: #0141a2;*/
-/*	padding: 10px;*/
-/*}*/
-/*.f-address li {*/
-/*	display: inline-block;*/
-/*}*/
-/*.f-address li i {*/
-/*	color: #2995de;*/
-/*	font-size: 18px;*/
-/*}*/
-/*.f-address li a {*/
-/*	color: #ccc;*/
-/*}*/
-/*!*=-Copyright-=*!*/
-/*.copyright {*/
-/*	background-color: #111;*/
-/*	padding: 12px 0;*/
-/*	font-size:14px;*/
-/*}*/
-
-
-
-
-/*footerEnd*/
-
-
-
-
-/*allBooks*/
 .mainContainer{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 .box{
-	/*position:fixed;*/
 	top:0;
 	left:0;
 	background-color: white;
-	/*position: relative;*/
-	/*border: 1px solid red;*/
 	display: inline-block;
 	position: relative;
 	max-width: 280px;
 	margin: 1em;
-	/*box-sizing: border-box;*/
 }
 .content{
 
 	box-shadow: 3px 3px 10px 1px #999;
 	width: 200px;
 	height: 270px;
-	/*top: 10%; right: 10%; bottom: 0; left: 0;*/
 	margin: 10% auto;
 	position: relative;
-	/*background:orange;*/
 	box-sizing: border-box;
-	/*border: 3px solid #86cfda;*/
 }
-
-
 .box:after{
-
 	content: '';
 	display: block;
 	padding-top: calc(45%);
-	/*border: solid 2px green;*/
 }
-
 .bookImage{
 	display: block;
 	margin: 0 auto;
@@ -366,8 +176,6 @@ body{
 	position: absolute;
 
 }
-
-
 .bottomContainer{
 	background-color: #f1f1f1;
 	width: 100%;
@@ -381,14 +189,11 @@ body{
 	float: left;
 	word-wrap: break-word;
 }
-
-
 .bookTitle{
 	font-size: 20px;
 	font-family: Optima, serif;
 	text-align: center;
 }
-
 .bookAuthor{
 	font: 1.156em/1.3 Gill Sans MT, Gill Sans, My Gill Sans, sans-serif;
 	font-size: .9em;
@@ -402,25 +207,7 @@ body{
 	margin-left: 2%;
 	margin-right: 5%;
 }
-/*allBooksend*/
 
-
-
-
-
-
-
-
-/*temp*/
-
-/*div{*/
-/*	border: solid 1px red;*/
-/*}*/
-
-
-
-
-/*bookPage*/
 .bookPageImg{
 	margin: 1em;
 	max-width: 300px;
@@ -450,6 +237,5 @@ body{
 .ifAvailableOrder{
 	margin-right: 1em;
 }
-/*bookPageend*/
 
 

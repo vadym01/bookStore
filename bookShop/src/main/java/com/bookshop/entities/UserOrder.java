@@ -18,9 +18,6 @@ public class UserOrder {
     private LocalDateTime orderDate;
 
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Delivery delivery;
-
     @ManyToOne
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
@@ -32,8 +29,6 @@ public class UserOrder {
     @OneToMany(mappedBy = "userOrder",cascade = CascadeType.ALL)
     private List<CartExtensions> cartExtensionsList;
 
-
-
     public double getTotalPrice() {
         return totalPrice;
     }
@@ -41,7 +36,6 @@ public class UserOrder {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-
 
     public Long getId() {
         return id;
@@ -66,7 +60,6 @@ public class UserOrder {
     public void setUser(User user) {
         this.user = user;
     }
-
 
     public List<CartExtensions> getCartExtensionsList() {
         return cartExtensionsList;

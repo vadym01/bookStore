@@ -20,7 +20,6 @@ import java.util.Map;
 @Service
 public class StripeServiceImpl implements StripeService {
 
-
     @Value("${private_key}")
     private String secretKey;
 
@@ -49,25 +48,16 @@ public class StripeServiceImpl implements StripeService {
     @Autowired
     DeliveryService deliveryService;
 
-
-
-
-
     @Override
     public void chargeNewCard(UserOrder userOrder,User user,UserCart userCart) throws AuthenticationException,InvalidRequestException,
             APIConnectionException,CardException,APIException{
-
-//       userCart.setQuantity(0);
-
         userOrder.setTotalPrice(user.getUserCart().getTotalPrice());
         userOrder.setUser(user);
         userOrder.setDelivery(deliveryService.findByActualAndUser(true,user));
         userOrder.setOrderDate(LocalDateTime.now());
         userOrder.setDisplayToUser(true);
         userOrder.setDisplayToAdmin(true);
-//        userOrder.setCartExtensions(user.getCartExtensionsList());
         userOrderRepository.save(userOrder);
-
 
         List<CartExtensions> cartExtension = cartExtensionService.getCartExtensionsForUserOrder(false,userCart);
         for (CartExtensions extensions:

@@ -10,19 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeliveryServiceImpl implements DeliveryService {
 
-
     @Autowired
     DeliveryRepository deliveryRepository;
 
     @Autowired
     UserRepository userRepository;
 
-
-
     @Override
     public void saveDeliveryAddress(User user, Delivery delivery) {
         delivery.setUser(user);
-//        deliveryRepository.findByActualAndUser(true,user).forEach(s -> s.setActual(false));
         Delivery delivery1 = deliveryRepository.findByActualAndUser(true,user);
         if( delivery1 != null){
            delivery1.setActual(false);

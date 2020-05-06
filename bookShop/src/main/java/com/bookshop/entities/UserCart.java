@@ -20,8 +20,6 @@ public class UserCart {
     @JsonIgnore
     private List<CartExtensions> cartItemList;
 
-
-
     private double totalPrice;
 
     public UserCart() {

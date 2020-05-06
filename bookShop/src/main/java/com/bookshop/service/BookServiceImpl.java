@@ -17,8 +17,6 @@ import java.util.Optional;
 @Service
 public class BookServiceImpl implements BookService{
 
-
-
     @Autowired
     private BookRepository bookRepository;
 
@@ -26,8 +24,6 @@ public class BookServiceImpl implements BookService{
     public Book addNewBook(Book book) {
         return bookRepository.save(book);
     }
-
-
 
     @Override
     public Iterable<Book> findAll() {
@@ -50,19 +46,10 @@ public class BookServiceImpl implements BookService{
         return bookRepository.getBookById(id);
     }
 
-
-//    @Override
-//    public List<Book> findBookByTitle(String title) {
-//        return bookRepository.findByTitleContaining(title);
-//    }
-
-//    osnov
     @Override
     public List<Book> findBook(String book) {
         return bookRepository.findByTitleContaining(book);
     }
-
-
 
     public Page<Book> getAllBooksPaginated(Pageable pageable) {
         List<Book> books = bookRepository.findAll();
@@ -78,48 +65,28 @@ public class BookServiceImpl implements BookService{
             int toIndex = Math.min(startItem + pageSize, books.size());
             list = books.subList(startItem, toIndex);
         }
-
         Page<Book> bookPage
                 = new PageImpl<Book>(list, PageRequest.of(currentPage, pageSize), books.size());
 
         return bookPage;
     }
 
-
-
-
-
-
     public Page<Book> getAllBooksPaginatedByTitle(String title,Pageable pageable) {
         List<Book> books = bookRepository.findByTitleContaining(title);
-
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
         List<Book> list;
-
         if (books.size() < startItem) {
             list = Collections.emptyList();
         } else {
             int toIndex = Math.min(startItem + pageSize, books.size());
             list = books.subList(startItem, toIndex);
         }
-
         Page<Book> bookPage
                 = new PageImpl<Book>(list, PageRequest.of(currentPage, pageSize), books.size());
-
         return bookPage;
     }
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public List<Book> sortByDateFirstFour() {
@@ -130,39 +97,5 @@ public class BookServiceImpl implements BookService{
     public List<Book> sortBySalesFirstFour() {
         return bookRepository.bookSalesSorted();
     }
-
-
-//    @Override
-//    public Book updateBook(Long id) {
-//        return bookRepository.findById(id);
-//    }
-
-
-//
-//    @Override
-//    public Book updateBook(Book book) {
-//        return bookRepository.save(book);
-//    }
-//
-//    @Override
-//    public List<Book> getAll() {
-////        Book book = new Book();
-//        List <Book> book = (List<Book>) bookRepository.findAll();
-//        return book;
-//    }
-
-//    @Override
-//    public List<Book> getAllBooks(Long id) {
-//        return (List<Book>) bookRepository.findAllById(Collections.singleton(id));
-//    }
-
-
-
-
-//    @Override
-//    public Optional updateBook(Book book) {
-//
-//        return bookRepository(book);
-//    }
 
 }
