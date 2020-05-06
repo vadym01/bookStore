@@ -62,32 +62,4 @@ public class FrontPageController {
         return "booksCategory";
     }
 
-
-
-//
-//    @RequestMapping("/allBooks")
-//    public String searchAll(@RequestParam("size") Optional<Integer> size,
-//                            @RequestParam("page")Optional<Integer>page,Model model){
-//        int currentPage = page.orElse(1);
-//        int pageSize = size.orElse(12);
-//        Page<Book> bookPage = bookService.getAllBooksPaginated(PageRequest.of(currentPage-1,pageSize));
-//
-//        model.addAttribute("bookPage",bookPage);
-//        int totalPages = bookPage.getTotalPages();
-//        if(totalPages > 0){
-//            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages)
-//                    .boxed()
-//                    .collect(Collectors.toList());
-//            model.addAttribute("pageNumbers",pageNumbers);
-//        }
-//        return "allBooks";
-//    }
-
-
-
-
-
-
-
-
 }

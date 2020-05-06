@@ -1,6 +1,6 @@
 package com.bookshop.controllers;
 
-import com.bookshop.auxiliaryFunctions.MailSender;
+//import com.bookshop.auxiliaryFunctions.MailSender;
 import com.bookshop.entities.*;
 import com.bookshop.repository.BookRepository;
 import com.bookshop.repository.CartExtensionRepository;
@@ -46,8 +46,8 @@ public class Order {
     @Autowired
     DeliveryService deliveryService;
 
-    @Autowired
-    MailSender mailSender;
+//    @Autowired
+//    MailSender mailSender;
 
 
     @Value("${publishable_key}")
@@ -99,11 +99,11 @@ public class Order {
 
         User user = userService.findByEmail(principal.getName());
         Delivery delivery = deliveryService.findByActualAndUser(true,user);
-        try {
-            mailSender.sendMail(user.getEmail(),"bookStore",user,userOrder,delivery);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            mailSender.sendMail(user.getEmail(),"bookStore",user,userOrder,delivery);
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//        }
         UserCart userCart = user.getUserCart();
         stripeService.chargeNewCard (userOrder,user,userCart);
         List<CartExtensions> cartExtensionsList = cartExtensionService.findByUserOrder(userOrder);
